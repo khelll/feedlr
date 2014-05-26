@@ -75,7 +75,7 @@ client = Feedlr::Client.new(
 
 ### Rate limiting
 
-The client deals with a variaty of [errors](http://rubydoc.info/gems/feedlr/Error). The errors have a corresponding [rate_limit]((http://rubydoc.info/gems/feedlr/RateLimit)) object that maps to the returned rate limiting [headers](http://developer.feedly.com/v3/#rate-limiting) if any.
+The client deals with a variaty of [errors](http://rubydoc.info/gems/feedlr/Feedlr/Error). The errors have a corresponding [rate_limit](http://rubydoc.info/gems/feedlr/Feedlr/RateLimit) object that maps to the returned rate limiting [headers](http://developer.feedly.com/v3/#rate-limiting) if any.
 
 
 ## Contributing
