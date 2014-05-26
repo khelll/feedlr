@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://sandbox.feedly.com/v3/markers/counts?autorefresh=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Authorization:
+      - OAuth _oauth_access_token_
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Last-Modified:
+      - Sun May 18 16:18:12 PDT 2014
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Ratelimit-Count:
+      - '3791'
+      X-Feedly-Processing-Time:
+      - '19'
+      X-Feedly-Server:
+      - sandbox-he
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Sun, 18 May 2014 23:18:12 GMT
+      Server:
+      - feedlyServer/1.1
+    body:
+      encoding: UTF-8
+      string: '{"unreadcounts":[{"id":"feed/http://feeds.feedburner.com/Techcrunch","count":101,"updated":1400454112366},{"id":"feed/http://www.theverge.com/rss/full.xml","count":86,"updated":1400454104440},{"id":"feed/http://feeds.feedburner.com/TechPageOneEntrepreneurs","count":8,"updated":1400248939404},{"id":"feed/http://500hats.com/feed","count":0,"updated":1389127512412},{"id":"feed/http://feeds.feedburner.com/design-milk","count":9,"updated":1400267748576},{"id":"feed/http://www.engadget.com/rss.xml","count":33,"updated":1400452421797},{"id":"feed/http://www.yatzer.com/feed/index.php","count":12,"updated":1400404609153},{"id":"user/96cc52b7-a17f-4ce0-9b38-de1b6f08f156/category/global.all","count":249,"updated":1400454112366},{"id":"user/96cc52b7-a17f-4ce0-9b38-de1b6f08f156/category/Design","count":9,"updated":1400267748576},{"id":"user/96cc52b7-a17f-4ce0-9b38-de1b6f08f156/category/Kool","count":0,"updated":1389127512412},{"id":"user/96cc52b7-a17f-4ce0-9b38-de1b6f08f156/category/Art","count":9,"updated":1400267748576},{"id":"user/96cc52b7-a17f-4ce0-9b38-de1b6f08f156/category/Entreprenuership","count":8,"updated":1400248939404},{"id":"user/96cc52b7-a17f-4ce0-9b38-de1b6f08f156/category/global.uncategorized","count":232,"updated":1400454112366}]}'
+    http_version: 
+  recorded_at: Sun, 18 May 2014 23:19:55 GMT
+recorded_with: VCR 2.9.0

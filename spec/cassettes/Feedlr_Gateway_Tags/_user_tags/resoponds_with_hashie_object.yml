@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://sandbox.feedly.com/v3/tags
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Authorization:
+      - OAuth _oauth_access_token_
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Last-Modified:
+      - Sat May 17 15:10:39 PDT 2014
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Ratelimit-Count:
+      - '5240'
+      X-Feedly-Processing-Time:
+      - '0'
+      X-Feedly-Server:
+      - sandbox-he
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '238'
+      Date:
+      - Sat, 17 May 2014 22:10:38 GMT
+      Server:
+      - feedlyServer/1.1
+    body:
+      encoding: UTF-8
+      string: '[{"id":"user/96cc52b7-a17f-4ce0-9b38-de1b6f08f156/tag/Amazon","label":"Amazon"},{"id":"user/96cc52b7-a17f-4ce0-9b38-de1b6f08f156/tag/Mobile","label":"Mobile"},{"id":"user/96cc52b7-a17f-4ce0-9b38-de1b6f08f156/tag/google","label":"google"}]'
+    http_version: 
+  recorded_at: Sat, 17 May 2014 22:12:18 GMT
+recorded_with: VCR 2.9.0

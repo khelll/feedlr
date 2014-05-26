@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://sandbox.feedly.com/v3/markers
+    body:
+      encoding: UTF-8
+      string: '{"feedIds":["feed/http://feeds.engadget.com/weblogsinc/engadget","feed/http://www.yatzer.com/feed/index.php"],"action":"markAsRead","type":"feeds","asOf":1400243969}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Authorization:
+      - OAuth _oauth_access_token_
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Last-Modified:
+      - Sat May 17 05:37:52 PDT 2014
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Ratelimit-Count:
+      - '4248'
+      X-Feedly-Processing-Time:
+      - '299'
+      X-Feedly-Server:
+      - sandbox-he
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Content-Length:
+      - '0'
+      Date:
+      - Sat, 17 May 2014 12:37:51 GMT
+      Server:
+      - feedlyServer/1.1
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sat, 17 May 2014 12:39:30 GMT
+recorded_with: VCR 2.9.0

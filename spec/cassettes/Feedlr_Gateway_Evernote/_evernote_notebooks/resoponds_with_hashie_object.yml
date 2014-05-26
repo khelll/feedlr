@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://sandbox.feedly.com/v3/evernote/notebooks
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Feedly Ruby Gem 0.1.0
+      Authorization:
+      - OAuth _oauth_access_token_
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Last-Modified:
+      - Sun May 25 06:27:42 PDT 2014
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Ratelimit-Count:
+      - '3834'
+      X-Feedly-Processing-Time:
+      - '84'
+      X-Feedly-Server:
+      - sandbox-he
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '105'
+      Date:
+      - Sun, 25 May 2014 13:27:42 GMT
+      Server:
+      - feedlyServer/1.1
+    body:
+      encoding: UTF-8
+      string: '{"notebooks":[{"guid":"8fcf3dd9-b1ec-4706-ae83-ad9235513f87","name":"First
+        Notebook","type":"personal"}]}'
+    http_version:
+  recorded_at: Sun, 25 May 2014 13:29:43 GMT
+recorded_with: VCR 2.9.1

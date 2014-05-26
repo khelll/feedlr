@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://sandbox.feedly.com/v3/markers/reads?newerThan=1400876097
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Feedly Ruby Gem 0.1.0
+      Authorization:
+      - OAuth _oauth_access_token_
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Last-Modified:
+      - Sat May 24 13:14:59 PDT 2014
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Ratelimit-Count:
+      - '3296'
+      X-Feedly-Processing-Time:
+      - '9'
+      X-Feedly-Server:
+      - sandbox-he
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Sat, 24 May 2014 20:14:59 GMT
+      Server:
+      - feedlyServer/1.1
+    body:
+      encoding: UTF-8
+      string: '{"entries":["wYKRd7i/lQBYjja2wdel0eZCVQ0o0HPqRTRZY/cx6VQ=_145ebd5e9cc:5ec6:4d1db4d1","vSbjObuspiUUUlHx496XW/WaRBw2NaRdTW1NAiwoLAs=_1460fd7b5c1:28cfb:ac33133c","k3wM4lkt2uyzklIaZG/piLCFwWpRsuSz4luWQLHP0YY=_146067634e0:8aa0:aec60bc9","qXKMwD+H9w7rc42rGNxj3U1BuAKE5TpW1EZAANkzhmk=_145b8ce3a36:89e2:4eb0407d","qXKMwD+H9w7rc42rGNxj3U1BuAKE5TpW1EZAANkzhmk=_1460557338c:71d0:aec60bc9","qXKMwD+H9w7rc42rGNxj3U1BuAKE5TpW1EZAANkzhmk=_145d8468fce:1003:593aa9b2","qXKMwD+H9w7rc42rGNxj3U1BuAKE5TpW1EZAANkzhmk=_145e2cb3a50:2c3:592195db","PSNTZO8gXFUe+cpCZyApw0vEKWPT4b14D6teBEocIAE=_14606fa9138:1a538:ac33133c","1iFkmAfSI/02w17CiU4A7y9Dt9scZdZNh32xpy9B54s=_1461fc9c0ac:55:4ff004ed","Xne8uW/IUiZhV1EuO2ZMzIrc2Ak6NlhGjboZ+Yk0rJ8=_14605b9efb5:7a2b:aec60bc9","qXKMwD+H9w7rc42rGNxj3U1BuAKE5TpW1EZAANkzhmk=_145b9cdf580:544:7f4ba42e","qXKMwD+H9w7rc42rGNxj3U1BuAKE5TpW1EZAANkzhmk=_145d38e07c2:1d41:87ec9d39","PSNTZO8gXFUe+cpCZyApw0vEKWPT4b14D6teBEocIAE=_1460784a8ed:1b669:ac33133c","n2AVTP7fNugY5B4y5BN9tk/UlIVe48DSept9qXpGYUs=_145b7d774d4:73e9:4eb0407d"],"feeds":[{"asOf":1236582000000,"id":"feed/http://feeds.feedburner.com/git-ready"},{"asOf":1372903927976,"id":"feed/http://500hats.com/feed"},{"asOf":1398711706550,"id":"feed/http://feeds.feedburner.com/TechPageOneEntrepreneurs"},{"asOf":1400138498617,"id":"feed/http://www.theverge.com/rss/full.xml"},{"asOf":1400169736188,"id":"feed/http://feeds.feedburner.com/design-milk"},{"asOf":1393442145439,"id":"feed/http://feeds.feedburner.com/codinghorror"},{"asOf":1398787676231,"id":"feed/http://css-tricks.com/feed/"},{"asOf":1399230804585,"id":"feed/http://www.yatzer.com/feed/index.php"},{"asOf":1400271035220,"id":"feed/http://www.engadget.com/rss.xml"},{"asOf":1400151771928,"id":"feed/http://feeds.feedburner.com/Techcrunch"},{"asOf":1399996938490,"id":"feed/http://feeds.feedburner.com/TechPageOneTechnology"}]}'
+    http_version:
+  recorded_at: Sat, 24 May 2014 20:16:58 GMT
+recorded_with: VCR 2.9.1

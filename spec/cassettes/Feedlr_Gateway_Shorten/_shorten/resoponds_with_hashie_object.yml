@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://sandbox.feedly.com/v3/shorten/entries/k3wM4lkt2uyzklIaZG%2FpiLCFwWpRsuSz4luWQLHP0YY=_142814c6526:338b:2190d777
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Authorization:
+      - OAuth _oauth_access_token_
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Last-Modified:
+      - Sat May 17 05:38:13 PDT 2014
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Ratelimit-Count:
+      - '4248'
+      X-Feedly-Processing-Time:
+      - '1'
+      X-Feedly-Server:
+      - sandbox-he
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '252'
+      Date:
+      - Sat, 17 May 2014 12:38:13 GMT
+      Server:
+      - feedlyServer/1.1
+    body:
+      encoding: UTF-8
+      string: '{"entryId":"k3wM4lkt2uyzklIaZG/piLCFwWpRsuSz4luWQLHP0YY=_142814c6526:338b:2190d777","shortUrl":"http://sandbox.feedly.com/e/Shqvh6hP","longUrl":"http://design-milk.com/disco-ball-inspired-scotch-club-lighting-collection/","via":"Feedlr
+        sandbox client"}'
+    http_version:
+  recorded_at: Sat, 17 May 2014 12:39:51 GMT
+recorded_with: VCR 2.9.0

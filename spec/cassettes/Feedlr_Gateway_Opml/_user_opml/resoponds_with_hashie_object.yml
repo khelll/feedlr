@@ -1,0 +1,80 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://sandbox.feedly.com/v3/opml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - text/xml
+      Authorization:
+      - OAuth _oauth_access_token_
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Last-Modified:
+      - Sun May 18 03:32:51 PDT 2014
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Ratelimit-Count:
+      - '4670'
+      Content-Disposition:
+      - attachment; filename="feedly.opml"
+      X-Feedly-Processing-Time:
+      - '2'
+      X-Feedly-Server:
+      - sandbox-he
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Sun, 18 May 2014 10:32:51 GMT
+      Server:
+      - feedlyServer/1.1
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+
+        <opml version="1.0">
+            <head>
+                <title>Khaled subscriptions in feedly Cloud</title>
+            </head>
+            <body>
+                <outline text="Design" title="Design">
+                    <outline type="rss" text="Design Milk" title="Design Milk" xmlUrl="http://feeds.feedburner.com/design-milk" htmlUrl="http://design-milk.com"/>
+                </outline>
+                <outline text="Kool" title="Kool">
+                    <outline type="rss" text="Dave McClure" title="Dave McClure" xmlUrl="http://500hats.com/feed" htmlUrl="http://500hats.com"/>
+                </outline>
+                <outline text="Art" title="Art">
+                    <outline type="rss" text="Design Milk" title="Design Milk" xmlUrl="http://feeds.feedburner.com/design-milk" htmlUrl="http://design-milk.com"/>
+                </outline>
+                <outline text="Entreprenuership" title="Entreprenuership">
+                    <outline type="rss" text="Tech Page One Entrepreneurs" title="Tech Page One Entrepreneurs" xmlUrl="http://feeds.feedburner.com/TechPageOneEntrepreneurs" htmlUrl="http://techpageone.dell.com"/>
+                    <outline type="rss" text="Dave McClure" title="Dave McClure" xmlUrl="http://500hats.com/feed" htmlUrl="http://500hats.com"/>
+                </outline>
+                <outline type="rss" text="TechCrunch" title="TechCrunch" xmlUrl="http://feeds.feedburner.com/Techcrunch" htmlUrl="http://techcrunch.com"/>
+                <outline type="rss" text="The Verge" title="The Verge" xmlUrl="http://www.theverge.com/rss/full.xml" htmlUrl="http://www.theverge.com/"/>
+                <outline type="rss" text="Engadget" title="Engadget" xmlUrl="http://www.engadget.com/rss.xml" htmlUrl="http://www.engadget.com"/>
+                <outline type="rss" text="Yatzer" title="Yatzer" xmlUrl="http://www.yatzer.com/feed/index.php" htmlUrl="http://www.yatzer.com"/>
+            </body>
+        </opml>
+    http_version: 
+  recorded_at: Sun, 18 May 2014 10:34:32 GMT
+recorded_with: VCR 2.9.0

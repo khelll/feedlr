@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://sandbox.feedly.com/v3/subscriptions
+    body:
+      encoding: UTF-8
+      string: '{"id":"feed/http://feeds.feedburner.com/design-milk","title":"Design
+        Milk","categories":[{"id":"user/96cc52b7-a17f-4ce0-9b38-de1b6f08f156/category/Design","label":"Design"},{"id":"user/96cc52b7-a17f-4ce0-9b38-de1b6f08f156/category/Art","label":"Art"}]}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Authorization:
+      - OAuth _oauth_access_token_
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Last-Modified:
+      - Sat May 17 05:37:58 PDT 2014
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Ratelimit-Count:
+      - '4248'
+      X-Feedly-Processing-Time:
+      - '283'
+      X-Feedly-Server:
+      - sandbox-he
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '0'
+      Date:
+      - Sat, 17 May 2014 12:37:58 GMT
+      Server:
+      - feedlyServer/1.1
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sat, 17 May 2014 12:39:36 GMT
+recorded_with: VCR 2.9.0

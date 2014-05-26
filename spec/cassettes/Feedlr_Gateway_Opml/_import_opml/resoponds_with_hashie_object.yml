@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://sandbox.feedly.com/v3/opml
+    body:
+      encoding: UTF-8
+      string: |2-
+
+        <?xml version="1.0" encoding="UTF-8"?>
+        <opml version="1.0">
+         <body>
+          <outline title="MY" icon="">
+           <outline title="Coding Horror" type="rss" xmlUrl="http://feeds.feedburner.com/codinghorror" htmlUrl="http://www.codinghorror.com/blog/"/>
+           <outline title="Git Ready" type="rss" xmlUrl="http://feeds.feedburner.com/git-ready" htmlUrl="http://gitready.com/"/>
+           <outline title="PragDave" type="rss" xmlUrl="http://pragdave.blogs.pragprog.com/pragdave/atom.xml" htmlUrl="http://pragdave.blogs.pragprog.com/pragdave/"/>
+          </outline>
+         </body>
+        </opml>
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - text/xml
+      User-Agent:
+      - Feedly Ruby Gem 0.1.0
+      Authorization:
+      - OAuth _oauth_access_token_
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Last-Modified:
+      - Mon May 19 11:51:09 PDT 2014
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Ratelimit-Count:
+      - '4099'
+      Content-Disposition:
+      - attachment; filename="feedly.opml"
+      X-Feedly-Processing-Time:
+      - '419'
+      X-Feedly-Server:
+      - sandbox-he
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '0'
+      Date:
+      - Mon, 19 May 2014 18:51:09 GMT
+      Server:
+      - feedlyServer/1.1
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 19 May 2014 18:52:55 GMT
+recorded_with: VCR 2.9.0

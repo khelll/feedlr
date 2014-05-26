@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://sandbox.feedly.com/v3/microsoft/oneNoteAdd
+    body:
+      encoding: UTF-8
+      string: '{"entryId":"k3wM4lkt2uyzklIaZG/piLCFwWpRsuSz4luWQLHP0YY=_142814c6526:338b:2190d777"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Feedly Ruby Gem 0.1.0
+      Authorization:
+      - OAuth _oauth_access_token_
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Last-Modified:
+      - Tue May 20 02:07:26 PDT 2014
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Ratelimit-Count:
+      - '2520'
+      X-Feedly-Processing-Time:
+      - '0'
+      X-Feedly-Server:
+      - sandbox-he
+      Content-Type:
+      - application/json;charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Tue, 20 May 2014 09:07:26 GMT
+      Server:
+      - feedlyServer/1.1
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"pageUrl":"https://onedrive.live.com/redir.aspx?cid=056dffbbd353c5b2&page=edit&resid=56DFFBBD353C5B2!107&wd=target%28Quick%20Notes.one%7C0ea08ab2-b519-41f7-a979-e97c39dcd840%2FThe%20Disco%20Ball%20Inspired%20Scotch%20Club%20Lighting%20Collection%7Cfb237846-cab2-4ad7-8743-8db223d731e2%2F%29"}'
+    http_version: 
+  recorded_at: Tue, 20 May 2014 09:09:13 GMT
+recorded_with: VCR 2.9.0

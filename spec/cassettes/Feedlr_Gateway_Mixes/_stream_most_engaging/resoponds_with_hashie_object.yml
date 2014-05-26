@@ -1,0 +1,102 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://sandbox.feedly.com/v3/mixes/contents?count=30&streamId=user/96cc52b7-a17f-4ce0-9b38-de1b6f08f156/category/Entreprenuership
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Feedly Ruby Gem 0.1.0
+      Authorization:
+      - OAuth _oauth_access_token_
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Last-Modified:
+      - Sun May 18 18:44:55 PDT 2014
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Ratelimit-Count:
+      - '3747'
+      X-Feedly-Processing-Time:
+      - '5'
+      X-Feedly-Server:
+      - sandbox-he
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Mon, 19 May 2014 01:44:55 GMT
+      Server:
+      - feedlyServer/1.1
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6InVzZXIvOTZjYzUyYjctYTE3Zi00Y2UwLTliMzgtZGUxYjZmMDhm
+        MTU2L2NhdGVnb3J5L0VudHJlcHJlbnVlcnNoaXAiLCJpdGVtcyI6W3siaWQi
+        OiJxWEtNd0QrSDl3N3JjNDJyR054ajNVMUJ1QUtFNVRwVzFFWkFBTmt6aG1r
+        PV8xNDYwNTU3MzM4Yzo3MWQwOmFlYzYwYmM5Iiwib3JpZ2luSWQiOiJodHRw
+        Oi8vdGVjaHBhZ2VvbmUuZGVsbC5jb20vP3A9NDU1NjIiLCJmaW5nZXJwcmlu
+        dCI6IjM1ZDM5ZGIwIiwia2V5d29yZHMiOlsiRG93bnRpbWUiLCJFbnRyZXBy
+        ZW5ldXJzaGlwIiwiR2FkZ2V0cyAmIERldmljZXMiLCIzRCBwcmludGluZyIs
+        IkJ1c2luZXNzIiwiR3JhY2UgQ2hvaSIsIm1ha2V1cCIsIk1pbmsiXSwiY29u
+        dGVudCI6eyJjb250ZW50IjoiPHA+R3JhY2UgQ2hvaSB3YXMgYXQgSGFydmFy
+        ZCBCdXNpbmVzcyBTY2hvb2wgd2hlbiBzaGUgZGlzcnVwdGVkIHRoZSBiZWF1
+        dHkgaW5kdXN0cnkgYnkgY3JlYXRpbmcgTWluaywgd2hpY2ggcHJpbnRzIG1h
+        a2V1cCBmcm9tIGNvZGVzIG9mZiBjb2xvciBwaG90b3Mgb24gdGhlIFdlYi48
+        L3A+XG48cD5UaGUgcG9zdCA8YSBocmVmPVwiaHR0cDovL3RlY2hwYWdlb25l
+        LmRlbGwuY29tL2J1c2luZXNzL2VudHJlcHJlbmV1cnNoaXAtYnVzaW5lc3Mv
+        aGFydmFyZC13b21hbi1jcmVhdGVzLTNkLXByaW50ZXItZm9yLW1ha2V1cC9c
+        Ij5IYXJ2YXJkIHdvbWFuIGNyZWF0ZXMgM0QgcHJpbnRlciDigJQgZm9yIG1h
+        a2V1cDwvYT4gYXBwZWFyZWQgZmlyc3Qgb24gPGEgaHJlZj1cImh0dHA6Ly90
+        ZWNocGFnZW9uZS5kZWxsLmNvbVwiPlRlY2ggUGFnZSBPbmU8L2E+LjwvcD48
+        aW1nIGhlaWdodD1cIjFcIiB3aWR0aD1cIjFcIiBzcmM9XCJodHRwOi8vZmVl
+        ZHMuZmVlZGJ1cm5lci5jb20vfnIvVGVjaFBhZ2VPbmVFbnRyZXByZW5ldXJz
+        L340L0RMYWp3RHltYVlZXCI+IiwiZGlyZWN0aW9uIjoibHRyIn0sInN1bW1h
+        cnkiOnsiY29udGVudCI6IjxwPkdyYWNlIENob2kgd2FzIGF0IEhhcnZhcmQg
+        QnVzaW5lc3MgU2Nob29sIHdoZW4gc2hlIGRpc3J1cHRlZCB0aGUgYmVhdXR5
+        IGluZHVzdHJ5IGJ5IGNyZWF0aW5nIE1pbmssIHdoaWNoIHByaW50cyBtYWtl
+        dXAgZnJvbSBjb2RlcyBvZmYgY29sb3IgcGhvdG9zIG9uIHRoZSBXZWIuPC9w
+        PjxwPlRoZSBwb3N0IDxhIGhyZWY9XCJodHRwOi8vdGVjaHBhZ2VvbmUuZGVs
+        bC5jb20vYnVzaW5lc3MvZW50cmVwcmVuZXVyc2hpcC1idXNpbmVzcy9oYXJ2
+        YXJkLXdvbWFuLWNyZWF0ZXMtM2QtcHJpbnRlci1mb3ItbWFrZXVwL1wiPkhh
+        cnZhcmQgd29tYW4gY3JlYXRlcyAzRCBwcmludGVyIOKAlCBmb3IgbWFrZXVw
+        PC9hPiBhcHBlYXJlZCBmaXJzdCBvbiA8YSBocmVmPVwiaHR0cDovL3RlY2hw
+        YWdlb25lLmRlbGwuY29tXCI+VGVjaCBQYWdlIE9uZTwvYT4uPC9wPiIsImRp
+        cmVjdGlvbiI6Imx0ciJ9LCJ0aXRsZSI6IkhhcnZhcmQgd29tYW4gY3JlYXRl
+        cyAzRCBwcmludGVyIOKAlCBmb3IgbWFrZXVwIiwiY2Fub25pY2FsIjpbeyJo
+        cmVmIjoiaHR0cDovL3RlY2hwYWdlb25lLmRlbGwuY29tL2J1c2luZXNzL2Vu
+        dHJlcHJlbmV1cnNoaXAtYnVzaW5lc3MvaGFydmFyZC13b21hbi1jcmVhdGVz
+        LTNkLXByaW50ZXItZm9yLW1ha2V1cC8iLCJ0eXBlIjoidGV4dC9odG1sIn1d
+        LCJhbHRlcm5hdGUiOlt7ImhyZWYiOiJodHRwOi8vZmVlZHByb3h5Lmdvb2ds
+        ZS5jb20vfnIvVGVjaFBhZ2VPbmVFbnRyZXByZW5ldXJzL34zL0RMYWp3RHlt
+        YVlZLyIsInR5cGUiOiJ0ZXh0L2h0bWwifV0sImF1dGhvciI6IkN1cmF0ZWQg
+        YnkgVGVjaCBQYWdlIE9uZSIsImNyYXdsZWQiOjE0MDAyNDg5Mzk0MDQsInB1
+        Ymxpc2hlZCI6MTQwMDI0ODg0MTAwMCwib3JpZ2luIjp7Imh0bWxVcmwiOiJo
+        dHRwOi8vdGVjaHBhZ2VvbmUuZGVsbC5jb20iLCJzdHJlYW1JZCI6ImZlZWQv
+        aHR0cDovL2ZlZWRzLmZlZWRidXJuZXIuY29tL1RlY2hQYWdlT25lRW50cmVw
+        cmVuZXVycyIsInRpdGxlIjoiVGVjaCBQYWdlIE9uZSDCuyBFbnRyZXByZW5l
+        dXJzaGlwIn0sInVucmVhZCI6ZmFsc2UsImNhdGVnb3JpZXMiOlt7ImlkIjoi
+        dXNlci85NmNjNTJiNy1hMTdmLTRjZTAtOWIzOC1kZTFiNmYwOGYxNTYvY2F0
+        ZWdvcnkvRW50cmVwcmVudWVyc2hpcCIsImxhYmVsIjoiRW50cmVwcmVudWVy
+        c2hpcCJ9XSwidGFncyI6W3siaWQiOiJ1c2VyLzk2Y2M1MmI3LWExN2YtNGNl
+        MC05YjM4LWRlMWI2ZjA4ZjE1Ni90YWcvZ2xvYmFsLnJlYWQiLCJsYWJlbCI6
+        Imdsb2JhbC5yZWFkIn1dfV19
+    http_version: 
+  recorded_at: Mon, 19 May 2014 01:46:38 GMT
+recorded_with: VCR 2.9.0

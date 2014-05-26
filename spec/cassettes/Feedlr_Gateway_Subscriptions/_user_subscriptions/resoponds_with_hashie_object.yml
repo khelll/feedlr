@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://sandbox.feedly.com/v3/subscriptions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Authorization:
+      - OAuth _oauth_access_token_
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Last-Modified:
+      - Sun May 18 03:32:54 PDT 2014
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Ratelimit-Count:
+      - '4670'
+      X-Feedly-Processing-Time:
+      - '3'
+      X-Feedly-Server:
+      - sandbox-he
+      Content-Type:
+      - application/json;charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Sun, 18 May 2014 10:32:54 GMT
+      Server:
+      - feedlyServer/1.1
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '[{"id":"feed/http://feeds.feedburner.com/Techcrunch","title":"TechCrunch","website":"http://techcrunch.com","categories":[],"updated":1400388747208,"velocity":256.7,"topics":["Tech"]},{"id":"feed/http://www.theverge.com/rss/full.xml","title":"The
+        Verge","website":"http://www.theverge.com/","categories":[],"updated":1400390660787,"velocity":211.2,"topics":["Tech"]},{"id":"feed/http://feeds.feedburner.com/TechPageOneEntrepreneurs","title":"Tech
+        Page One Entrepreneurs","website":"http://techpageone.dell.com","categories":[{"id":"user/96cc52b7-a17f-4ce0-9b38-de1b6f08f156/category/Entreprenuership","label":"Entreprenuership"}],"updated":1400248939404,"velocity":3.5},{"id":"feed/http://500hats.com/feed","title":"Dave
+        McClure","website":"http://500hats.com","categories":[{"id":"user/96cc52b7-a17f-4ce0-9b38-de1b6f08f156/category/Kool","label":"testing"},{"id":"user/96cc52b7-a17f-4ce0-9b38-de1b6f08f156/category/global.stale","label":"Stale
+        Feeds"},{"id":"user/96cc52b7-a17f-4ce0-9b38-de1b6f08f156/category/Entreprenuership","label":"Entreprenuership"}],"updated":1389127512412,"velocity":0.0},{"id":"feed/http://feeds.feedburner.com/design-milk","title":"Design
+        Milk","website":"http://design-milk.com","categories":[{"id":"user/96cc52b7-a17f-4ce0-9b38-de1b6f08f156/category/Design","label":"Design"},{"id":"user/96cc52b7-a17f-4ce0-9b38-de1b6f08f156/category/Art","label":"Art"}],"updated":1400267748576,"velocity":45.5,"topics":["design"]},{"id":"feed/http://www.engadget.com/rss.xml","title":"Engadget","website":"http://www.engadget.com","categories":[],"updated":1400387049336,"velocity":263.7,"topics":["Tech","Technology","Test"]},{"id":"feed/http://www.yatzer.com/feed/index.php","title":"Yatzer","website":"http://www.yatzer.com","categories":[],"updated":1400404609153,"velocity":5.8}]'
+    http_version: 
+  recorded_at: Sun, 18 May 2014 10:34:35 GMT
+recorded_with: VCR 2.9.0

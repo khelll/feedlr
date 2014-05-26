@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://sandbox.feedly.com/v3/evernote/note
+    body:
+      encoding: UTF-8
+      string: '{"notebookName":"feedly notebook","comment":"user comment","url":"http://techcrunch.com/2014/03/05/evernote-adds-handwriting-to-its-android-app/","notebookType":"personal","notebookGuid":"bc1815a0-0a56-46aa-9dca-4c8a53a4eb42","tags":["tag1","tag2"]}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Feedly Ruby Gem 0.1.0
+      Authorization:
+      - OAuth _oauth_access_token_
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Last-Modified:
+      - Fri May 23 07:09:14 PDT 2014
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Ratelimit-Count:
+      - '2512'
+      X-Feedly-Processing-Time:
+      - '3547'
+      X-Feedly-Server:
+      - sandbox-he
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '2'
+      Date:
+      - Fri, 23 May 2014 14:09:17 GMT
+      Server:
+      - feedlyServer/1.1
+    body:
+      encoding: UTF-8
+      string: '{}'
+    http_version: 
+  recorded_at: Fri, 23 May 2014 14:11:12 GMT
+recorded_with: VCR 2.9.0

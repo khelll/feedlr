@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://sandbox.feedly.com/v3/streams/user%2F96cc52b7-a17f-4ce0-9b38-de1b6f08f156%2Fcategory%2FEntreprenuership/ids?count=30&unreadOnly=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Feedly Ruby Gem 0.1.0
+      Authorization:
+      - OAuth _oauth_access_token_
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Last-Modified:
+      - Sun May 18 16:35:23 PDT 2014
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Ratelimit-Count:
+      - '3760'
+      X-Feedly-Processing-Time:
+      - '14'
+      X-Feedly-Server:
+      - sandbox-he
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Sun, 18 May 2014 23:35:23 GMT
+      Server:
+      - feedlyServer/1.1
+    body:
+      encoding: UTF-8
+      string: '{"ids":["qXKMwD+H9w7rc42rGNxj3U1BuAKE5TpW1EZAANkzhmk=_145e2cb3a50:2c3:592195db","qXKMwD+H9w7rc42rGNxj3U1BuAKE5TpW1EZAANkzhmk=_145d38e07c2:1d41:87ec9d39","qXKMwD+H9w7rc42rGNxj3U1BuAKE5TpW1EZAANkzhmk=_145be1895ff:17:ab70c728","qXKMwD+H9w7rc42rGNxj3U1BuAKE5TpW1EZAANkzhmk=_145bdabfff4:5f6:fac3a39b","qXKMwD+H9w7rc42rGNxj3U1BuAKE5TpW1EZAANkzhmk=_145b9cdf580:544:7f4ba42e","qXKMwD+H9w7rc42rGNxj3U1BuAKE5TpW1EZAANkzhmk=_145b3cc6b0d:3969:4eb0407d","qXKMwD+H9w7rc42rGNxj3U1BuAKE5TpW1EZAANkzhmk=_145af4a47de:4a4c:91265e89","qXKMwD+H9w7rc42rGNxj3U1BuAKE5TpW1EZAANkzhmk=_145aed4f4b2:4132:91265e89"]}'
+    http_version: 
+  recorded_at: Sun, 18 May 2014 23:37:06 GMT
