@@ -13,7 +13,6 @@ end
 
 require_relative '../lib/feedlr.rb'
 
-require 'pry'
 require 'feedlr'
 require 'rspec'
 require 'webmock/rspec'
