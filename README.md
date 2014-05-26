@@ -1,4 +1,6 @@
-# Feedlr
+# Feedlr - A Ruby interface to Feedly
+
+[![Gem Version](https://badge.fury.io/rb/feedlr.svg)](http://badge.fury.io/rb/feedlr) [![Build Status](https://travis-ci.org/khelll/feedlr.svg?branch=master)](https://travis-ci.org/khelll/feedlr) [![Coverage Status](https://coveralls.io/repos/khelll/feedlr/badge.png)](https://coveralls.io/r/khelll/feedlr) [![Dependency Status](https://gemnasium.com/khelll/feedlr.svg)](https://gemnasium.com/khelll/feedlr)
 
 A Ruby interface to Feedly's [API](http://developer.feedly.com/).
 
