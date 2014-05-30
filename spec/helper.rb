@@ -49,3 +49,7 @@ end
 def access_token
   '_oauth_access_token'
 end
+
+def fixture_path(path)
+  File.expand_path(File.join(File.dirname(__FILE__), 'fixtures', path))
+end

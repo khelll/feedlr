@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+   <body>
+      <outline title="MY" icon="">
+         <outline title="Coding Horror" type="rss" xmlUrl="http://feeds.feedburner.com/codinghorror" htmlUrl="http://www.codinghorror.com/blog/" />
+         <outline title="Git Ready" type="rss" xmlUrl="http://feeds.feedburner.com/ git-ready" htmlUrl="http://gitready.com/" />
+         <outline title="PragDave" type="rss" xmlUrl="http://pragdave.blogs.pragprog.com/pragdave/atom.xml" htmlUrl="http://pragdave.blogs.pragprog.com/pragdave/" />
+      </outline>
+   </body>
+</opml>

@@ -1,4 +1,5 @@
 require_relative 'request'
+require_relative 'utils'
 require_relative 'gateway/feeds'
 require_relative 'gateway/categories'
 require_relative 'gateway/entries'
@@ -22,6 +23,7 @@ module Feedlr
   # Feedlr Client
   class Client
     include Request
+    include Utils
     include Gateway::Feeds
     include Gateway::Categories
     include Gateway::Entries

@@ -15,12 +15,19 @@ module Feedlr
       # Import an OPML
       #
       # @see http://developer.feedly.com/v3/opml/#import-an-opml
-      # @param io_stream [IOStream] Any IOStream object
+      # ```ruby
+      # import_opml(file_path)
+      # import_opml(io_obj)
+      # import_opml(pathname_obj)
+      # ```
+      # @param file [#to_str, #read]
       # @return [Feedlr::Success]
-      def import_opml(io_stream)
-        build_object(:post, '/opml', io_stream.read,
+      def import_opml(file)
+        contents = read_file_contents(file)
+        build_object(:post, '/opml', contents,
                      :'Content-Type' => 'text/xml')
       end
+
     end
   end
 end
