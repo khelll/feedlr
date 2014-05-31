@@ -15,7 +15,7 @@ module Feedlr
       # Update the profile of the user
       #
       # @see http://developer.feedly.com/v3/profile/#update-the-profile-of-the-user
-      # @param profile [Hash]
+      # @param profile [#to_hash]
       # @return [Feedlr::Base]
       def update_profile(profile)
         build_object(:post , '/profile' , profile)

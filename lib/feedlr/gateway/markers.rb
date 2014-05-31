@@ -7,7 +7,7 @@ module Feedlr
       # Get the list of unread counts
       #
       # @see http://developer.feedly.com/v3/markers/#get-the-list-of-unread-counts
-      # @param options [Hash]
+      # @param options [#to_hash]
       # @option options [String] :autorefresh let's the server know
       #  if this is a background auto-refresh or not
       # @option options [String] :newerThan timestamp in ms. Default is 30 days.
@@ -16,6 +16,7 @@ module Feedlr
       #  to feeds in this category
       # @return [Feedlr::Base]
       def user_unread_counts(options = {})
+        options = options.to_hash
         build_object(:get , '/markers/counts' , options)
       end
 
@@ -31,11 +32,11 @@ module Feedlr
       # Mark multiple articles as read
       #
       # @see http://developer.feedly.com/v3/markers/#mark-one-or-multiple-articles-as-read
-      # @param articles_ids [Array]
+      # @param articles_ids [#to_ary]
       # @return [Feedlr::Success]
       def mark_articles_as_read(articles_ids)
         build_object(:post , '/markers' ,
-                     entryIds: articles_ids ,
+                     entryIds: articles_ids.to_ary ,
                      action: 'markAsRead' ,
                      type: 'entries'
                      )
@@ -53,11 +54,11 @@ module Feedlr
       # Keep multiple articles as unread
       #
       # @see http://developer.feedly.com/v3/markers/#mark-one-or-multiple-articles-as-read
-      # @param articles_ids [Array]
+      # @param articles_ids [#to_ary]
       # @return [Feedlr::Success]
       def mark_articles_as_unread(articles_ids)
         build_object(:post , '/markers' ,
-                     entryIds: articles_ids ,
+                     entryIds: articles_ids.to_ary ,
                      action: 'keepUnread' ,
                      type: 'entries'
                      )
@@ -67,7 +68,7 @@ module Feedlr
       #
       # @see mark_feeds_as_read
       # @param feed_id [String]
-      # @param options [Hash]
+      # @param options [#to_hash]
       # @return [Feedlr::Success]
       def mark_feed_as_read(feed_id , options)
         mark_feeds_as_read([feed_id] , options)
@@ -76,16 +77,16 @@ module Feedlr
       # Mark feeds as read
       #
       # @see http://developer.feedly.com/v3/markers/#mark-a-feed-as-read
-      # @param feeds_ids [Array]
-      # @param options [Hash]
+      # @param feeds_ids [#to_ary]
+      # @param options [#to_hash]
       # @option options [String] :lastReadEntryId
       # @option options [String] :asOf timestamp
       # @return [Feedlr::Success]
       def mark_feeds_as_read(feeds_ids, options)
+        options = options.to_hash
         fail(ArgumentError) unless options[:lastReadEntryId] || options[:asOf]
-
         opts =  {
-          feedIds: feeds_ids ,
+          feedIds: feeds_ids.to_ary ,
           action: 'markAsRead' ,
           type: 'feeds'
         }
@@ -99,7 +100,7 @@ module Feedlr
       #
       # @see mark_categories_as_read
       # @param category_id [String]
-      # @param options [Hash]
+      # @param options [#to_hash]
       # @return [Feedlr::Success]
       def mark_category_as_read(category_id , options)
         mark_categories_as_read([category_id] , options)
@@ -108,16 +109,16 @@ module Feedlr
       # Mark categories as read
       #
       # @see http://developer.feedly.com/v3/markers/#mark-a-category-as-read
-      # @param categories_ids [Array]
-      # @param options [Hash]
+      # @param categories_ids [#to_ary]
+      # @param options [#to_hash]
       # @option options [String] :lastReadEntryId
       # @option options [String] :asOf timestamp
       # @return [Feedlr::Success]
       def mark_categories_as_read(categories_ids, options)
+        options = options.to_hash
         fail(ArgumentError) unless options[:lastReadEntryId] || options[:asOf]
-
         opts =  {
-          categoryIds: categories_ids ,
+          categoryIds: categories_ids.to_ary ,
           action: 'markAsRead' ,
           type: 'categories'
         }
@@ -139,11 +140,11 @@ module Feedlr
       # Undo mark feeds as read
       #
       # @see http://developer.feedly.com/v3/markers/#undo-mark-as-read
-      # @param feeds_ids [Array]
+      # @param feeds_ids [#to_ary]
       # @return [Feedlr::Success]
       def undo_mark_feeds_as_read(feeds_ids)
         build_object(:post , '/markers',
-                     feedIds: feeds_ids ,
+                     feedIds: feeds_ids.to_ary ,
                      action: 'undoMarkAsRead' ,
                      type: 'feeds'
                      )
@@ -161,11 +162,11 @@ module Feedlr
       # Undo mark categories as read
       #
       # @see http://developer.feedly.com/v3/markers/#undo-mark-as-read
-      # @param categories_ids [Array]
+      # @param categories_ids [#to_ary]
       # @return [Feedlr::Success]
       def undo_mark_categories_as_read(categories_ids)
         build_object(:post , '/markers',
-                     categoryIds: categories_ids,
+                     categoryIds: categories_ids.to_ary,
                      action: 'undoMarkAsRead',
                      type: 'categories'
                      )
@@ -174,7 +175,7 @@ module Feedlr
       # Get the latest read operations (to sync local cache)
       #
       # @see http://developer.feedly.com/v3/markers/#get-the-latest-read-operations-to-sync-local-cache
-      # @param options [Hash]
+      # @param options [#to_hash]
       # @option options [String] :newerThan timestamp in ms. Default is 30 days.
       # @return [Feedlr::Base]
       def sync_read_counts(options = {})
@@ -184,7 +185,7 @@ module Feedlr
       # Get the latest tagged entry ids
       #
       # @see http://developer.feedly.com/v3/markers/#get-the-latest-tagged-entry-ids
-      # @param options [Hash]
+      # @param options [#to_hash]
       # @option options [String] :newerThan timestamp in ms. Default is 30 days.
       # @return [Feedlr::Base]
       def lastest_tagged_entries(options = {})

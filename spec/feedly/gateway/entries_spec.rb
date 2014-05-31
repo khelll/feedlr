@@ -27,7 +27,7 @@ describe Feedlr::Gateway::Entries, vcr: { record: :new_episodes } do
     it 'sends a post request' do
       stub = stub_request(:post, 'http://sandbox.feedly.com/v3/entries/.mget')
       .with(body: MultiJson.dump(continuation: options[:continuation],
-                                 ids: entries_ids))
+                                 ids: entries_ids.to_ary))
       client.user_entries(entries_ids)
       expect(stub).to have_been_requested
     end
@@ -52,7 +52,7 @@ describe Feedlr::Gateway::Entries, vcr: { record: :new_episodes } do
     end
     it 'sends a post request' do
       stub = stub_request(:post, 'http://sandbox.feedly.com/v3/entries')
-      .with(body: MultiJson.dump(entry))
+      .with(body: MultiJson.dump(entry.to_hash))
       .to_return(body: '{ }')
       client.add_entry(entry)
       expect(stub).to have_been_requested

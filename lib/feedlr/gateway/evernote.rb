@@ -27,7 +27,7 @@ module Feedlr
       # Save an article as a note (Pro only)
       #
       # @see http://developer.feedly.com/v3/evernote/#save-an-article-as-a-note-pro-only
-      # @param entry [Hash]
+      # @param entry [#to_hash]
       # @return [Feedlr::Success]
       def add_to_evernote(entry)
         build_object(:post , '/evernote/note' , entry)

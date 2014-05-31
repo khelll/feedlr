@@ -15,7 +15,7 @@ module Feedlr
       # Update the preferences of the user
       #
       # @see http://developer.feedly.com/v3/preferences/#update-the-preferences-of-the-user
-      # @param preferences [Hash]
+      # @param preferences [#to_hash]
       # @return [Feedlr::Base]
       def update_preferences(preferences)
         build_object(:post , '/preferences' , preferences)

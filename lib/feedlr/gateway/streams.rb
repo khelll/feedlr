@@ -8,7 +8,7 @@ module Feedlr
       #
       # @see http://developer.feedly.com/v3/streams/#get-a-list-of-entry-ids-for-a-specific-stream
       # @param stream_id [String]
-      # @param options [Hash]
+      # @param options [#to_hash]
       # @option options [String] :count mber of entry ids to return.
       #  default is 20. max is 10,000
       # @option options [String] :ranked newest or oldest. default is newest
@@ -24,7 +24,7 @@ module Feedlr
       #
       # @see http://developer.feedly.com/v3/streams/#get-the-content-of-a-stream
       # @param stream_id [String]
-      # @param options [Hash]
+      # @param options [#to_hash]
       # @option options [String] :count mber of entry ids to return.
       #  default is 20. max is 10 , 000
       # @option options [String] :ranked newest or oldest. default is newest

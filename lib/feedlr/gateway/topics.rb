@@ -15,7 +15,7 @@ module Feedlr
       # Add a topic to the user feedly account
       #
       # @see http://developer.feedly.com/v3/topics/#add-a-topic-to-the-user-feedly-account
-      # @param topic [Hash]
+      # @param topic [#to_hash]
       # @return [Feedlr::Success]
       def add_topic(topic)
         build_object(:post , '/topics' ,  topic)
@@ -24,7 +24,7 @@ module Feedlr
       # Update an existing topic
       #
       # @see http://developer.feedly.com/v3/topics/#update-an-existing-topic
-      # @param topic [Hash]
+      # @param topic [#to_hash]
       # @return [Feedlr::Success]
       def update_topic(topic)
         build_object(:post , '/topics' ,  topic)

@@ -13,7 +13,7 @@ describe Feedlr::Gateway::Mixes, vcr: { record: :new_episodes } do
 
     it 'sends a get request' do
       stub = stub_request(:get, 'http://sandbox.feedly.com/v3/mixes/contents')
-      .with(query: { streamId: stream }.merge(options))
+      .with(query: { streamId: stream }.merge(options.to_hash))
       client.stream_most_engaging(stream, options)
       expect(stub).to have_been_requested
     end

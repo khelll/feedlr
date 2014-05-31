@@ -28,7 +28,7 @@ module Feedlr
           def #{method}(path, params, headers)
               request(:#{method}, path, headers) do |request|
                 if !headers || headers[:"Content-Type"].nil?
-                  params = MultiJson.dump(params)
+                  params = MultiJson.dump(input_to_payload(params))
                 end
                 request.body = params if params
               end
@@ -40,10 +40,36 @@ module Feedlr
       class_eval <<-RUBY ,  __FILE__ ,  __LINE__ + 1
           def #{method}(path, params, headers)
               request(:#{method}, path, headers) do |request|
-                request.params.update(params) if params
+                request.params.update(input_to_params(params)) if params
               end
           end
       RUBY
+    end
+
+    # Convert input to consumable payload
+    # @param input [#to_hash, #to_ary]
+    # @return [Hash,Array]
+    def input_to_payload(input)
+      case input
+      when ->(data) { data.respond_to?(:to_hash) }
+        input.to_hash
+      when ->(data) { data.respond_to?(:to_ary) }
+        input.to_ary
+      else
+        fail TypeError, "#{input.inspect} to payload"
+      end
+    end
+
+    # Convert input to consumable payload
+    # @param input [#to_ary]
+    # @return [Array]
+    def input_to_params(input)
+      case input
+      when ->(data) { data.respond_to?(:to_hash) }
+        input.to_hash
+      else
+        fail TypeError, "#{input.inspect} to params"
+      end
     end
 
     # Initiate and memoize the HTTP connection object
@@ -61,8 +87,8 @@ module Feedlr
         request:  {
           open_timeout: 10,
           timeout: 30
-         }
-       }
+        }
+      }
     end
 
     # Build and memoize the rack middleware for the requests
@@ -127,9 +153,9 @@ module Feedlr
       @headers = { :"Accept" => 'application/json',
                    :"Content-Type" => 'application/json',
                    :user_agent => user_agent
-      }
+                   }
       @headers[:Authorization] =
-                  "OAuth #{oauth_access_token}" if oauth_access_token
+        "OAuth #{oauth_access_token}" if oauth_access_token
       @headers
     end
 

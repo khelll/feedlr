@@ -15,7 +15,7 @@ module Feedlr
       # Subscribe to a feed
       #
       # @see http://developer.feedly.com/v3/subscriptions/#subscribe-to-a-feed
-      # @param subscription [Hash]
+      # @param subscription [#to_hash]
       # @return [Feedlr::Base]
       def add_subscription(subscription)
         build_object(:post , '/subscriptions' , subscription)
@@ -24,7 +24,7 @@ module Feedlr
       # Update an existing subscription
       #
       # @see http://developer.feedly.com/v3/subscriptions/#update-an-existing-subscription
-      # @param subscription [Hash]
+      # @param subscription [#to_hash]
       # @return [Feedlr::Success]
       def update_subscription(subscription)
         add_subscription(subscription)

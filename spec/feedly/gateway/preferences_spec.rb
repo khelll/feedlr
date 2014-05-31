@@ -26,7 +26,7 @@ describe Feedlr::Gateway::Preferences, vcr: { record: :new_episodes } do
     end
     it 'sends a post request' do
       stub = stub_request(:post, 'http://sandbox.feedly.com/v3/preferences')
-      .with(body: MultiJson.dump(preferences))
+      .with(body: MultiJson.dump(preferences.to_hash))
       client.update_preferences(preferences)
       expect(stub).to have_been_requested
     end

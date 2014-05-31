@@ -8,7 +8,7 @@ module Feedlr
       #
       # @see http://developer.feedly.com/v3/mixes/#get-a-mix-of-the-most-engaging-content-available-in-a-stream
       # @param stream_id [String]
-      # @param options [Hash]
+      # @param options [#to_hash]
       # @option options [String] :count number of entry ids to return.
       #  default is 3. max is 20
       # @option options [String] :unreadOnly boolean default value is false
@@ -22,7 +22,7 @@ module Feedlr
       # @return [Feedlr::Base]
       def stream_most_engaging(stream_id , options = {})
         build_object(:get, '/mixes/contents',
-                     { streamId: stream_id }.merge(options))
+                     { streamId: stream_id }.merge(options.to_hash))
       end
     end
   end

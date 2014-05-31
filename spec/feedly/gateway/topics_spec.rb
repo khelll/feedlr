@@ -26,7 +26,7 @@ describe Feedlr::Gateway::Topics, vcr: { record: :new_episodes } do
     end
     it 'sends a post request' do
       stub = stub_request(:post, 'http://sandbox.feedly.com/v3/topics')
-      .with(body: MultiJson.dump(topic))
+      .with(body: MultiJson.dump(topic.to_hash))
       client.add_topic(topic)
       expect(stub).to have_been_requested
     end
@@ -44,7 +44,7 @@ describe Feedlr::Gateway::Topics, vcr: { record: :new_episodes } do
     end
     it 'sends a post request' do
       stub = stub_request(:post, 'http://sandbox.feedly.com/v3/topics')
-      .with(body: MultiJson.dump(topic))
+      .with(body: MultiJson.dump(topic.to_hash))
       client.update_topic(topic)
       expect(stub).to have_been_requested
     end

@@ -47,7 +47,7 @@ describe Feedlr::Gateway::Tags, vcr: { record: :new_episodes } do
       tags_query = tags_ids.map { |t| CGI.escape(t) }.join(',')
       stub = stub_request(:put,
                           "http://sandbox.feedly.com/v3/tags/#{tags_query}")
-      .with(body: MultiJson.dump(entryIds: entries_ids))
+      .with(body: MultiJson.dump(entryIds: entries_ids.to_ary))
 
       client.tag_entries(entries_ids, tags_ids)
       expect(stub).to have_been_requested
@@ -72,8 +72,8 @@ describe Feedlr::Gateway::Tags, vcr: { record: :new_episodes } do
   describe '#untag_entries' do
 
     it 'sends a delete request' do
-      tags_query = tags_ids.map { |t| CGI.escape(t) }.join(',')
-      entries_query = entries_ids.map { |t| CGI.escape(t) }.join(',')
+      tags_query = tags_ids.to_ary.map { |t| CGI.escape(t) }.join(',')
+      entries_query = entries_ids.to_ary.map { |t| CGI.escape(t) }.join(',')
       stub = stub_request(:delete, 'http://sandbox.feedly.com/v3/tags/'\
         "#{tags_query}/#{entries_query}")
       client.untag_entries(entries_ids, tags_ids)
@@ -113,7 +113,7 @@ describe Feedlr::Gateway::Tags, vcr: { record: :new_episodes } do
 
   describe '#delete_tags'  do
     it 'sends a delete request' do
-      tags_query = tags_ids.map { |t| CGI.escape(t) }.join(',')
+      tags_query = tags_ids.to_ary.map { |t| CGI.escape(t) }.join(',')
       stub = stub_request(:delete, 'http://sandbox.feedly.com/v3/tags/'\
         "#{tags_query}").to_return(body: '{ }')
       client.delete_tags(tags_ids)

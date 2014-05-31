@@ -34,7 +34,7 @@ describe Feedlr::Gateway::Subscriptions, vcr: { record: :new_episodes } do
     end
     it 'sends a post request' do
       stub = stub_request(:post, 'http://sandbox.feedly.com/v3/subscriptions')
-      .with(body: MultiJson.dump(subscription)).to_return(body: '{ }')
+      .with(body: MultiJson.dump(subscription.to_hash)).to_return(body: '{ }')
       client.add_subscription(subscription)
       expect(stub).to have_been_requested
     end
@@ -58,7 +58,7 @@ describe Feedlr::Gateway::Subscriptions, vcr: { record: :new_episodes } do
     end
     it 'sends a post request' do
       stub = stub_request(:post, 'http://sandbox.feedly.com/v3/subscriptions')
-      .with(body: MultiJson.dump(subscription))
+      .with(body: MultiJson.dump(subscription.to_hash))
       client.update_subscription(subscription)
       expect(stub).to have_been_requested
     end

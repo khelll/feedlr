@@ -9,7 +9,7 @@ describe Feedlr::Gateway::Search, vcr: { record: :new_episodes } do
   describe '#search_feeds' do
     it 'sends a get request' do
       stub = stub_request(:get, 'http://sandbox.feedly.com/v3/search/feeds')
-      .with(query: { 'q' => query }.merge(options))
+      .with(query: { 'q' => query }.merge(options.to_hash))
       client.search_feeds(query, options)
       expect(stub).to have_been_requested
     end
@@ -28,7 +28,7 @@ describe Feedlr::Gateway::Search, vcr: { record: :new_episodes } do
 
     it 'sends a get request' do
       stub = stub_request(:get, 'http://sandbox.feedly.com/v3/search/contents')
-      .with(query: { q: query, streamId: stream }.merge(options))
+      .with(query: { q: query, streamId: stream }.merge(options.to_hash))
 
       client.search_stream(stream, query, options)
       expect(stub).to have_been_requested

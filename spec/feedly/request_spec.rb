@@ -1,5 +1,11 @@
 require 'helper'
 
+Point = Struct.new(:x, :y) do
+  def to_ary
+    [x, y]
+  end
+end
+
 describe Feedlr::Request do
   let(:client) { Feedlr::Client.new(sandbox: true) }
   let(:response) { Hashie::Mash.new(status: 200, body: { a: :b }, headers: {}) }
@@ -68,6 +74,35 @@ describe Feedlr::Request do
       response = Hashie::Mash.new(status: 400, body: { a: :b }, headers: {})
       expect { client.send(:verify_success, response) }
       .to raise_error(Feedlr::Error::BadRequest)
+    end
+  end
+
+  describe '#input_to_payload' do
+    it 'it accepts #to_hash input' do
+      input = Hashie::Mash.new(a: 1, b: 2)
+      expect(client.send(:input_to_payload, input)).to eq(input.to_hash)
+    end
+
+    it 'it accepts #to_ary input' do
+      input = Point.new(5, 10)
+      expect(client.send(:input_to_payload, input)).to eq(input.to_ary)
+    end
+
+    it 'raises TypeError otherwise' do
+      expect { client.send(:input_to_payload, 'hello') }
+      .to raise_error(TypeError)
+    end
+  end
+
+  describe '#input_to_params' do
+    it 'it accepts #to_ary input' do
+      input = Hashie::Mash.new(a: 1, b: 2)
+      expect(client.send(:input_to_params, input)).to eq(input.to_hash)
+    end
+
+    it 'raises TypeError otherwise' do
+      expect { client.send(:input_to_params, 'hello') }
+      .to raise_error(TypeError)
     end
   end
 

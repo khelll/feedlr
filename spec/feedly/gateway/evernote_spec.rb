@@ -46,7 +46,7 @@ describe Feedlr::Gateway::Evernote, vcr: { record: :new_episodes } do
     end
     it 'sends a get request' do
       stub = stub_request(:post, 'http://sandbox.feedly.com/v3/evernote/note')
-      .with(body: MultiJson.dump(entry))
+      .with(body: MultiJson.dump(entry.to_hash))
       client.add_to_evernote(entry)
       expect(stub).to have_been_requested
     end

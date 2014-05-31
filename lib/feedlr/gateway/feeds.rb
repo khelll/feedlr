@@ -16,7 +16,7 @@ module Feedlr
       # Get the metadata for a list of feeds
       #
       # @see http://developer.feedly.com/v3/feeds/#get-the-metadata-for-a-list-of-feeds
-      # @param feeds_ids [Array] list of ids
+      # @param feeds_ids [#to_ary] list of ids
       # @return [Feedlr::Collection]
       def feeds(feeds_ids)
         build_object(:post , '/feeds/.mget' , feeds_ids)

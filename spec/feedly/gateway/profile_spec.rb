@@ -25,7 +25,7 @@ describe Feedlr::Gateway::Profile, vcr: { record: :new_episodes } do
     let(:profile) { { gender: 'female', fullName: 'Best lady' } }
     it 'sends a post request' do
       stub = stub_request(:post, 'http://sandbox.feedly.com/v3/profile')
-      .with(body: MultiJson.dump(profile))
+      .with(body: MultiJson.dump(profile.to_hash))
       client.update_profile(profile)
       expect(stub).to have_been_requested
     end

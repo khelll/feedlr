@@ -16,7 +16,7 @@ module Feedlr
       #
       # @see tag_entries
       # @param entry_id [String]
-      # @param tags_ids [Array] list of tags ids
+      # @param tags_ids [#to_ary] list of tags ids
       # @return [Feedlr::Success]
       def tag_entry(entry_id , tags_ids)
         tag_entries([entry_id] , tags_ids)
@@ -25,19 +25,20 @@ module Feedlr
       # Tag multiple entries
       #
       # @see http://developer.feedly.com/v3/tags/#tag-multiple-entries
-      # @param entries_ids [Array] list of entries ids
-      # @param tags_ids [Array] list of tags ids
+      # @param entries_ids [#to_ary] list of entries ids
+      # @param tags_ids [#to_ary] list of tags ids
       # @return [Feedlr::Success]
       def tag_entries(entries_ids , tags_ids)
-        tags_query = tags_ids.map { |t| CGI.escape(t) }.join(',')
-        build_object(:put , "/tags/#{tags_query}" , entryIds: entries_ids)
+        tags_query = tags_ids.to_ary.map { |t| CGI.escape(t) }.join(',')
+        build_object(:put , "/tags/#{tags_query}",
+                     entryIds: entries_ids.to_ary)
       end
 
       # Untag an existing entry
       #
       # @see untag_entries
       # @param entry_id [String]
-      # @param tags_ids [Array] list of tags ids
+      # @param tags_ids [#to_ary] list of tags ids
       # @return [Feedlr::Success]
       def untag_entry(entry_id , tags_ids)
         untag_entries([entry_id] , tags_ids)
@@ -46,12 +47,12 @@ module Feedlr
       # Untag multiple entries
       #
       # @see http://developer.feedly.com/v3/tags/#untag-multiple-entries
-      # @param entries_ids [Array] list of entries ids
-      # @param tags_ids [Array] list of tags ids
+      # @param entries_ids [#to_ary] list of entries ids
+      # @param tags_ids [#to_ary] list of tags ids
       # @return [Feedlr::Success]
       def untag_entries(entries_ids , tags_ids)
-        tags_query = tags_ids.map { |t| CGI.escape(t) }.join(',')
-        entries_query = entries_ids.map { |t| CGI.escape(t) }.join(',')
+        tags_query = tags_ids.to_ary.map { |t| CGI.escape(t) }.join(',')
+        entries_query = entries_ids.to_ary.map { |t| CGI.escape(t) }.join(',')
         build_object(:delete , "/tags/#{tags_query}/#{entries_query}")
       end
 
@@ -77,10 +78,10 @@ module Feedlr
       # Delete tags
       #
       # @see http://developer.feedly.com/v3/tags/#delete-tags
-      # @param tags_ids [Array] list of ids
+      # @param tags_ids [#to_ary] list of ids
       # @return [Feedlr::Success]
       def delete_tags(tags_ids)
-        tags_query = tags_ids.map { |t| CGI.escape(t) }.join(',')
+        tags_query = tags_ids.to_ary.map { |t| CGI.escape(t) }.join(',')
         build_object(:delete , "/tags/#{tags_query }")
       end
     end
