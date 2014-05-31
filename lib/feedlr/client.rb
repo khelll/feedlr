@@ -55,8 +55,8 @@ module Feedlr
       @oauth_access_token = options.fetch(:oauth_access_token) do
         Feedlr.oauth_access_token
       end
-      @sandbox = options.fetch(:sandbox) { Feedlr.sandbox }
       @logger = options.fetch(:logger) { Feedlr.logger }
+      self.sandbox = options.fetch(:sandbox) { Feedlr.sandbox }
     end
 
     # Sandbox factory
@@ -69,5 +69,11 @@ module Feedlr
     end
 
     alias_method :sandbox?, :sandbox
+
+    private
+
+    def sandbox=(value)
+      @sandbox = Feedlr::Utils.boolean(value)
+    end
   end
 end

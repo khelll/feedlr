@@ -1,7 +1,7 @@
 module Feedlr
   # Utilities
   module Utils
-    private
+    module_function
 
     # Read file contents
     #
@@ -13,6 +13,15 @@ module Feedlr
       else
         file.read
       end
+    end
+
+    # Get boolean value
+    #
+    # @param content [FalseClass,TrueClass]
+    # @return [FalseClass,TrueClass]
+    def boolean(value)
+      fail(TypeError) unless [true, false].include?(value)
+      value
     end
   end
 end

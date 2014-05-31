@@ -6,7 +6,7 @@ describe Feedlr do
 
   after(:each) do
     Feedlr.oauth_access_token = nil
-    Feedlr.sandbox = nil
+    Feedlr.sandbox = false
     Feedlr.logger = nil
   end
 
@@ -18,6 +18,15 @@ describe Feedlr do
     it 'should be in sandbox mode if set' do
       Feedlr.configure { |c| c.sandbox = true }
       expect(Feedlr.sandbox).to eq(true)
+    end
+  end
+
+
+  describe '::sandbox=' do
+    it 'should have a boolean value' do
+      allow(Feedlr::Utils).to receive(:boolean)
+      expect(Feedlr::Utils).to receive(:boolean)
+      Feedlr.configure { |c| c.sandbox = true }
     end
   end
 
@@ -51,4 +60,5 @@ describe Feedlr do
       expect(res).to be_true
     end
   end
+
 end

@@ -26,6 +26,11 @@ module Feedlr
       true
     end
 
+    # Sandbox setter
+    def sandbox=(value)
+      @sandbox = Feedlr::Utils.boolean(value)
+    end
+
     # Returns the value of attribute sandbox
     def sandbox
       @sandbox ||= false

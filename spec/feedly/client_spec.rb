@@ -62,4 +62,13 @@ describe Feedlr::Client do
       expect(client.sandbox?).to eq(client.sandbox)
     end
   end
+
+
+  describe 'sandbox=' do
+    it 'should have a boolean value' do
+      allow(Feedlr::Utils).to receive(:boolean)
+      expect(Feedlr::Utils).to receive(:boolean)
+      Feedlr::Client.sandbox
+    end
+  end
 end
