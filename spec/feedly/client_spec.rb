@@ -56,4 +56,10 @@ describe Feedlr::Client do
     end
   end
 
+  describe '#sandbox?' do
+    it 'should be an alias to #sandbox' do
+      client = Feedlr::Client.sandbox
+      expect(client.sandbox?).to eq(client.sandbox)
+    end
+  end
 end

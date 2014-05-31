@@ -67,5 +67,7 @@ module Feedlr
     def self.sandbox(options = {})
       new(options.merge(sandbox: true))
     end
+
+    alias_method :sandbox?, :sandbox
   end
 end
