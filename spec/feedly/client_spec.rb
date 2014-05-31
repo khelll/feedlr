@@ -46,4 +46,14 @@ describe Feedlr::Client do
     end
   end
 
+  describe '::sandbox' do
+    it 'should create a client with sandbox option' do
+      options = { oauth_access_token: 'new_test', logger: Logger.new(STDOUT) }
+      allow(Feedlr::Client).to receive(:new)
+      expect(Feedlr::Client).to receive(:new)
+      .with(options.merge(sandbox: true))
+      Feedlr::Client.sandbox(options)
+    end
+  end
+
 end

@@ -58,5 +58,14 @@ module Feedlr
       @sandbox = options.fetch(:sandbox) { Feedlr.sandbox }
       @logger = options.fetch(:logger) { Feedlr.logger }
     end
+
+    # Sandbox factory
+    # @param [Hash] options client options
+    # @option options [String] :oauth_access_token
+    # @option options [#debug,#info] :logger
+    # @return [Feedlr::Client]
+    def self.sandbox(options = {})
+      new(options.merge(sandbox: true))
+    end
   end
 end
