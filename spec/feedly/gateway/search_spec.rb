@@ -1,9 +1,8 @@
 require 'helper'
 
 describe Feedlr::Gateway::Search, vcr: { record: :new_episodes } do
-  let(:client) do
-    Feedlr::Client.new(sandbox: true, oauth_access_token: access_token)
-  end
+  let(:client) { Feedlr::Client.sandbox(oauth_access_token: access_token) }
+
   let(:query) { 'technology' }
   let(:options) { { n: '30' } }
   describe '#search_feeds' do

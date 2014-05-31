@@ -1,7 +1,7 @@
 require 'helper'
 
 describe Feedlr::Gateway::Feeds, vcr: { record: :new_episodes } do
-  let(:client) { Feedlr::Client.new(sandbox: true) }
+  let(:client) { Feedlr::Client.sandbox(oauth_access_token: access_token) }
 
   describe '#feed'  do
     let(:feed_id) { 'feed/http://feeds.engadget.com/weblogsinc/engadget' }

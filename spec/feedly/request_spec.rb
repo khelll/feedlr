@@ -7,8 +7,9 @@ Point = Struct.new(:x, :y) do
 end
 
 describe Feedlr::Request do
-  let(:client) { Feedlr::Client.new(sandbox: true) }
+  let(:client) { Feedlr::Client.sandbox }
   let(:response) { Hashie::Mash.new(status: 200, body: { a: :b }, headers: {}) }
+
   describe '#build_object' do
     %w(get delete post put).each do |verb|
       before :each do

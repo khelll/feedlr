@@ -1,9 +1,8 @@
 require 'helper'
 
 describe Feedlr::Gateway::Mixes, vcr: { record: :new_episodes } do
-  let(:client) do
-    Feedlr::Client.new(sandbox: true, oauth_access_token: access_token)
-  end
+  let(:client) { Feedlr::Client.sandbox(oauth_access_token: access_token) }
+
 
   let(:options) { { count: '30' } }
   describe '#stream_most_engaging' do

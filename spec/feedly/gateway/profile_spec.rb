@@ -1,9 +1,7 @@
 require 'helper'
 
 describe Feedlr::Gateway::Profile, vcr: { record: :new_episodes } do
-  let(:client) do
-    Feedlr::Client.new(sandbox: true, oauth_access_token: access_token)
-  end
+  let(:client) { Feedlr::Client.sandbox(oauth_access_token: access_token) }
 
   describe '#profile'  do
 
