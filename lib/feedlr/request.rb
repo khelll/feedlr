@@ -1,6 +1,6 @@
 require 'faraday'
 require 'faraday_middleware'
-require_relative 'mapper'
+require_relative 'factory'
 require_relative 'error'
 
 module Feedlr
@@ -20,7 +20,7 @@ module Feedlr
     # @return [Faraday::Response]
     def build_object(method, path, params = nil, headers = nil)
       response = send(method, path, params, headers)
-      Mapper.build(response.body)
+      Factory.create(response.body)
     end
 
     %w(post put).each do |method|
