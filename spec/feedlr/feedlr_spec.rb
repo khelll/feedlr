@@ -57,7 +57,7 @@ describe Feedlr do
 
     it 'should return true' do
       res = Feedlr.configure {}
-      expect(res).to be_true
+      expect(res).to eq(true)
     end
   end
 
