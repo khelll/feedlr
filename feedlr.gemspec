@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'feedlr/version'
 
 Gem::Specification.new do |gem|
-  gem.add_dependency 'hashie', '~> 2.0'
+  gem.add_dependency 'hashie', '~> 3.0'
   gem.add_dependency 'multi_xml', '~> 0.5'
   gem.add_dependency 'multi_json', '~> 1.0'
   gem.add_dependency 'faraday', '~> 0.9'
