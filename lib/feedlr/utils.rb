@@ -5,11 +5,11 @@ module Feedlr
 
     # Read file contents
     #
-    # @param content [#to_str, #read]
+    # @param file [#to_str, #read]
     # @return [String]
     def read_file_contents(file)
       if file.respond_to?(:to_str)
-        File.open(file, 'rb') { |f| f.read }
+        File.open(file, 'rb') { |file_obj| file_obj.read }
       else
         file.read
       end
