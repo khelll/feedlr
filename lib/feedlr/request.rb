@@ -97,7 +97,7 @@ module Feedlr
       @middleware ||= Faraday::RackBuilder.new do |faraday|
         faraday.request :url_encoded
         # Add logging
-        faraday.response(:logger, logger) unless logger.nil?
+        faraday.response(:logger, logger)
         # Parse XML
         faraday.response :xml, content_type: /\bxml$/
         # Parse JSON
@@ -115,7 +115,7 @@ module Feedlr
     # @return [Faraday::Response]
     def request(method, path, headers, &block)
       response = run_request(method, path, headers, &block)
-      logger.debug(response.inspect) unless logger.nil?
+      logger.debug(response.inspect)
       verify_success(response)
       response
     rescue Faraday::Error::TimeoutError, Timeout::Error => error

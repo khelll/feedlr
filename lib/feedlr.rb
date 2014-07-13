@@ -1,10 +1,12 @@
 require_relative 'feedlr/version'
 require_relative 'feedlr/client'
+require_relative 'feedlr/null_logger'
+
 # Feedlr top level module
 module Feedlr
   class << self
-    attr_accessor :oauth_access_token, :logger
-    attr_writer :sandbox
+    attr_accessor :oauth_access_token
+    attr_writer :sandbox, :logger
 
     # config/initializers/Feedlr.rb (for instance)
     #
@@ -34,6 +36,10 @@ module Feedlr
     # Returns the value of attribute sandbox
     def sandbox
       @sandbox ||= false
+    end
+
+    def logger
+      @logger ||= NullLogger.new
     end
   end
 end

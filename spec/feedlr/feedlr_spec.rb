@@ -30,6 +30,17 @@ describe Feedlr do
     end
   end
 
+  describe '::logger' do
+    it 'should be an instance of NullLogger if not set' do
+      expect(Feedlr.logger).to be_a(Feedlr::NullLogger)
+    end
+
+    it 'should have the right value if set' do
+      Feedlr.configure { |c| c.logger = logger }
+      expect(Feedlr.logger).to eq(logger)
+    end
+  end
+
   it 'should be able to set the oAuth access token,' \
   'sandbox and logger' do
     Feedlr.oauth_access_token  = 'oauth_access_token'
