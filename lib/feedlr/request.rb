@@ -91,10 +91,10 @@ module Feedlr
       }
     end
 
-    # Build and memoize the rack middleware for the requests
+    # Build the rack middleware for the requests
     # @return [Faraday::RackBuilder]
     def middleware
-      @middleware ||= Faraday::RackBuilder.new do |faraday|
+      Faraday::RackBuilder.new do |faraday|
         faraday.request :url_encoded
         # Add logging
         faraday.response(:logger, logger)
@@ -146,10 +146,9 @@ module Feedlr
       fail(klass.from_response(response)) if klass
     end
 
-    # Build and memoize the initial request headers
+    # Build the initial request headers
     # @return [Hash]
     def request_headers
-      return unless @headers.nil?
       @headers = { :"Accept" => 'application/json',
                    :"Content-Type" => 'application/json',
                    :user_agent => user_agent
