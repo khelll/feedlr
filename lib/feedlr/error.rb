@@ -24,15 +24,16 @@ module Feedlr
           403 => Feedlr::Error::Forbidden,
           404 => Feedlr::Error::NotFound,
           500 => Feedlr::Error::InternalServerError
-         }
+        }
       end
 
       private
 
       def parse_error(status, body)
         if body.is_a?(Hash)
-          if body['errorMessage']
-            "Error #{status} - #{body['errorMessage']}"
+          error_message = body['errorMessage']
+          if error_message
+            "Error #{status} - #{error_message}"
           else
             "Error #{status}"
           end
