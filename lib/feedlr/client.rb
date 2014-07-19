@@ -73,7 +73,7 @@ module Feedlr
     private
 
     def sandbox=(value)
-      @sandbox = Feedlr::Utils.boolean(value)
+      @sandbox = boolean(value)
     end
   end
 end

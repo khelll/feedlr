@@ -66,9 +66,9 @@ describe Feedlr::Client do
 
   describe 'sandbox=' do
     it 'should have a boolean value' do
-      allow(Feedlr::Utils).to receive(:boolean)
-      expect(Feedlr::Utils).to receive(:boolean)
-      Feedlr::Client.sandbox
+      client = Feedlr::Client.new
+      expect(client).to receive(:boolean)
+      client.send(:sandbox=, true)
     end
   end
 end
