@@ -23,37 +23,9 @@ describe Feedlr::Error  do
       it "raises #{ exception}" do
         stub_request(:post, 'http://sandbox.feedly.com/v3/feeds/.mget')
         .to_return(status: status, body: '{}')
-        expect {  client.feed(feed_id) }.to raise_error(exception)
+        expect { client.feed(feed_id) }.to raise_error(exception)
       end
     end
-  end
-
-  describe '::parse_error' do
-    context 'when body is a hash and has errorMessage' do
-      it 'returns error status and body errorMessage' do
-        body = { 'errorMessage' => error }
-        status = '400'
-        result = Feedlr::Error.send(:parse_error, status, body)
-        expect(result).to eq("Error #{status} - #{body['errorMessage']}")
-      end
-    end
-    context 'when body is a hash and has no errorMessage' do
-      it 'returns error status and body errorMessage' do
-        body = { 'noErrorMessage' => error }
-        status = '400'
-        result = Feedlr::Error.send(:parse_error, status, body)
-        expect(result).to eq("Error #{status}")
-      end
-    end
-    context 'when body is a not hash' do
-      it 'returns error status and body errorMessage' do
-        body = error
-        status = '400'
-        result = Feedlr::Error.send(:parse_error, status, body)
-        expect(result).to eq("Error #{status} - #{body}")
-      end
-    end
-
   end
 
 end

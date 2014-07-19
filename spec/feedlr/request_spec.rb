@@ -1,14 +1,8 @@
 require 'helper'
 
-Point = Struct.new(:x, :y) do
-  def to_ary
-    [x, y]
-  end
-end
-
 describe Feedlr::Request do
   let(:client) { Feedlr::Client.sandbox }
-  let(:response) { Hashie::Mash.new(status: 200, body: { a: :b }, headers: {}) }
+  let(:response) { double(status: 200, body: { a: :b }, headers: {}) }
 
   describe '#build_object' do
     %w(get delete post put).each do |verb|
@@ -37,10 +31,11 @@ describe Feedlr::Request do
     let(:request) { -> { client.send(:request, :get, '/path', nil) } }
 
     it 'runs the request and verifies it' do
-      allow(client).to receive(:run_request)
-      allow(client).to receive(:verify_success)
+      response = double
+      allow(client).to receive(:run_request).and_return(response)
+      allow(response).to receive(:raise_http_errors)
       expect(client).to receive(:run_request)
-      expect(client).to receive(:verify_success)
+      expect(response).to receive(:raise_http_errors)
       request.call
     end
 
@@ -70,14 +65,6 @@ describe Feedlr::Request do
 
   end
 
-  describe '#verify_success' do
-    it 'raises an exception if response code is not a success' do
-      response = Hashie::Mash.new(status: 400, body: { a: :b }, headers: {})
-      expect { client.send(:verify_success, response) }
-      .to raise_error(Feedlr::Error::BadRequest)
-    end
-  end
-
   describe '#input_to_payload' do
     it 'it accepts #to_hash input' do
       input = Hashie::Mash.new(a: 1, b: 2)
@@ -85,7 +72,7 @@ describe Feedlr::Request do
     end
 
     it 'it accepts #to_ary input' do
-      input = Point.new(5, 10)
+      input = double(to_ary: %w(x, y))
       expect(client.send(:input_to_payload, input)).to eq(input.to_ary)
     end
 

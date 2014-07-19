@@ -2,6 +2,7 @@ require 'faraday'
 require 'faraday_middleware'
 require_relative 'factory'
 require_relative 'error'
+require_relative 'response'
 
 module Feedlr
   # Do all http requests and call the mapper
@@ -24,7 +25,7 @@ module Feedlr
     end
 
     %w(post put).each do |method|
-      class_eval <<-RUBY ,  __FILE__ ,  __LINE__ + 1
+      class_eval <<-RUBY, __FILE__, __LINE__ + 1
           def #{method}(path, params, headers)
               request(:#{method}, path, headers) do |request|
                 if !headers || headers[:"Content-Type"].nil?
@@ -37,7 +38,7 @@ module Feedlr
     end
 
     %w(get delete).each do |method|
-      class_eval <<-RUBY ,  __FILE__ ,  __LINE__ + 1
+      class_eval <<-RUBY, __FILE__, __LINE__ + 1
           def #{method}(path, params, headers)
               request(:#{method}, path, headers) do |request|
                 request.params.update(input_to_params(params)) if params
@@ -107,16 +108,15 @@ module Feedlr
       end
     end
 
-    # Run the desired HTTP request, verifies it, raise excpetions in
+    # Run the desired HTTP request and raise excpetions in
     #  case of failure, otherwise return the response
     # @param method [String] HTTP method
     # @param path [String]
     # @param headers [Hash]
-    # @return [Faraday::Response]
+    # @return [Feedlr::Response]
     def request(method, path, headers, &block)
       response = run_request(method, path, headers, &block)
-      logger.debug(response.inspect)
-      verify_success(response)
+      response.raise_http_errors
       response
     rescue Faraday::Error::TimeoutError, Timeout::Error => error
       raise(Feedlr::Error::RequestTimeout.new, error.message)
@@ -124,26 +124,21 @@ module Feedlr
       raise(Feedlr::Error.new, error.message)
     end
 
-    # Run the actual request
+    # Run the actual request and logs it
     # @param method [String] HTTP method
     # @param path [String]
     # @param headers [Hash]
-    # @return [Faraday::Response]
+    # @return [Feedlr::Response]
     def run_request(method, path, headers)
-      connection.send(method) do |request|
+      faraday_response = connection.send(method) do |request|
         request.url(API_VERSION + path)
         request.headers.update(headers) if headers
         yield(request) if block_given?
       end
-    end
-
-    # Check the response code and raise exceptions if needed
-    # param response [Faraday::Response]
-    # @return [void]
-    def verify_success(response)
-      status_code = response.status.to_i
-      klass = Feedlr::Error.errors[status_code]
-      fail(klass.from_response(response)) if klass
+      logger.debug(faraday_response.inspect)
+      Feedlr::Response.new(faraday_response.status.to_i,
+                           faraday_response.headers,
+                           faraday_response.body)
     end
 
     # Build the initial request headers

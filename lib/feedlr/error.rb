@@ -6,16 +6,6 @@ module Feedlr
     attr_reader :rate_limit
 
     class << self
-      # Create a new error from an HTTP response
-      #
-      # @param response [Faraday::Response]
-      # @return [Feedlr::Error]
-      def from_response(response)
-        status_code = response.status.to_i
-        message = parse_error(status_code, response.body)
-        new(message, response.headers)
-      end
-
       # @return [Hash]
       def errors
         @errors ||=  {
@@ -25,21 +15,6 @@ module Feedlr
           404 => Feedlr::Error::NotFound,
           500 => Feedlr::Error::InternalServerError
         }
-      end
-
-      private
-
-      def parse_error(status, body)
-        if body.is_a?(Hash)
-          error_message = body['errorMessage']
-          if error_message
-            "Error #{status} - #{error_message}"
-          else
-            "Error #{status}"
-          end
-        else
-          "Error #{status} - #{body}"
-        end
       end
     end
 
