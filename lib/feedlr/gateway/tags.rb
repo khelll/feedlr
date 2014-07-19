@@ -29,7 +29,7 @@ module Feedlr
       # @param tags_ids [#to_ary] list of tags ids
       # @return [Feedlr::Success]
       def tag_entries(entries_ids , tags_ids)
-        tags_query = tags_ids.to_ary.map { |t| CGI.escape(t) }.join(',')
+        tags_query = join_ids(tags_ids)
         build_object(:put , "/tags/#{tags_query}",
                      entryIds: entries_ids.to_ary)
       end
@@ -51,8 +51,8 @@ module Feedlr
       # @param tags_ids [#to_ary] list of tags ids
       # @return [Feedlr::Success]
       def untag_entries(entries_ids , tags_ids)
-        tags_query = tags_ids.to_ary.map { |t| CGI.escape(t) }.join(',')
-        entries_query = entries_ids.to_ary.map { |t| CGI.escape(t) }.join(',')
+        tags_query = join_ids(tags_ids)
+        entries_query = join_ids(entries_ids)
         build_object(:delete , "/tags/#{tags_query}/#{entries_query}")
       end
 
@@ -81,9 +81,10 @@ module Feedlr
       # @param tags_ids [#to_ary] list of ids
       # @return [Feedlr::Success]
       def delete_tags(tags_ids)
-        tags_query = tags_ids.to_ary.map { |t| CGI.escape(t) }.join(',')
+        tags_query = join_ids(tags_ids)
         build_object(:delete , "/tags/#{tags_query }")
       end
+      
     end
   end
 end

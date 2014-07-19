@@ -3,6 +3,13 @@ module Feedlr
   module Utils
     module_function
 
+    # Join ids 
+    # @param file [#to_int]
+    # @return [String]
+    def join_ids(ids)
+      ids.to_ary.map { |id| CGI.escape(id) }.join(',')
+    end
+
     # Read file contents
     #
     # @param file [#to_str, #read]
