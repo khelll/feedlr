@@ -43,7 +43,7 @@ module Feedlr
     # Raised when Feedlr returns the HTTP status status_code 404
     class NotFound < ClientError; end
 
-    # Raised when Twitter returns a 5xx HTTP status code
+    # Raised when Feedlr returns a 5xx HTTP status code
     class ServerError < self; end
 
     # Raised when Feedlr returns the HTTP status status_code 500
