@@ -8,12 +8,12 @@ module Feedlr
     # @return [Feedlr::Collection]
     def initialize(data = [])
       super([])
-      data.each { |value| self << build_obj(value) }
+      data.each { |value| self << build_object(value) }
     end
 
     private
 
-    def build_obj(value)
+    def build_object(value)
       value.is_a?(Hash) ? Feedlr::Base.new(value) : value
     end
   end
