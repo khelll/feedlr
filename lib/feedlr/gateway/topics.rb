@@ -9,7 +9,7 @@ module Feedlr
       # @see http://developer.feedly.com/v3/topics/#get-the-list-of-topics-the-user-has-added-to-their-feedly
       # @return [Feedlr::Collection]
       def user_topics
-        build_object(:get , '/topics')
+        build_object(:get, '/topics')
       end
 
       # Add a topic to the user feedly account
@@ -18,7 +18,7 @@ module Feedlr
       # @param topic [#to_hash]
       # @return [Feedlr::Success]
       def add_topic(topic)
-        build_object(:post , '/topics' ,  topic)
+        build_object(:post, '/topics', topic)
       end
 
       # Update an existing topic
@@ -27,7 +27,7 @@ module Feedlr
       # @param topic [#to_hash]
       # @return [Feedlr::Success]
       def update_topic(topic)
-        build_object(:post , '/topics' ,  topic)
+        build_object(:post, '/topics', topic)
       end
 
       # Remove a topic from a feedly account
@@ -36,7 +36,7 @@ module Feedlr
       # @param topic_id [String]
       # @return [Feedlr::Success]
       def delete_topic(topic_id)
-        build_object(:delete , "/topics/#{CGI.escape(topic_id) }")
+        build_object(:delete, "/topics/#{CGI.escape(topic_id)}")
       end
     end
   end

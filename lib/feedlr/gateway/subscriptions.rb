@@ -9,7 +9,7 @@ module Feedlr
       # @see http://developer.feedly.com/v3/subscriptions/#get-the-users-subscriptions
       # @return [Feedlr::Collection]
       def user_subscriptions
-        build_object(:get , '/subscriptions')
+        build_object(:get, '/subscriptions')
       end
 
       # Subscribe to a feed
@@ -18,7 +18,7 @@ module Feedlr
       # @param subscription [#to_hash]
       # @return [Feedlr::Base]
       def add_subscription(subscription)
-        build_object(:post , '/subscriptions' , subscription)
+        build_object(:post, '/subscriptions', subscription)
       end
 
       # Update an existing subscription
@@ -36,7 +36,7 @@ module Feedlr
       # @param subscription_id [String]
       # @return [Feedlr::Success]
       def delete_subscription(subscription_id)
-        build_object(:delete , "/subscriptions/#{CGI.escape(subscription_id) }")
+        build_object(:delete, "/subscriptions/#{CGI.escape(subscription_id)}")
       end
     end
   end

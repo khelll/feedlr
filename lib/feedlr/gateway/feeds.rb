@@ -19,7 +19,7 @@ module Feedlr
       # @param feeds_ids [#to_ary] list of ids
       # @return [Feedlr::Collection]
       def feeds(feeds_ids)
-        build_object(:post , '/feeds/.mget' , feeds_ids)
+        build_object(:post, '/feeds/.mget', feeds_ids)
       end
     end
   end

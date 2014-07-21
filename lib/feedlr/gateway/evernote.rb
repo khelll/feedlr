@@ -13,7 +13,7 @@ module Feedlr
       # @see http://developer.feedly.com/v3/evernote/#unlink-evernote-account
       # @return [Feedlr::Success]
       def unlink_evernote
-        build_object(:delete , '/evernote/auth')
+        build_object(:delete, '/evernote/auth')
       end
 
       # Get a list of Evernote notebooks (Pro only)
@@ -21,7 +21,7 @@ module Feedlr
       # @see http://developer.feedly.com/v3/evernote/#get-a-list-of-evernote-notebooks-pro-only
       # @return [Feedlr::Collection]
       def evernote_notebooks
-        build_object(:get , '/evernote/notebooks')
+        build_object(:get, '/evernote/notebooks')
       end
 
       # Save an article as a note (Pro only)
@@ -30,7 +30,7 @@ module Feedlr
       # @param entry [#to_hash]
       # @return [Feedlr::Success]
       def add_to_evernote(entry)
-        build_object(:post , '/evernote/note' , entry)
+        build_object(:post, '/evernote/note', entry)
       end
     end
   end

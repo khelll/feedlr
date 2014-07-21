@@ -14,7 +14,7 @@ module Feedlr
       # @see http://developer.feedly.com/v3/twitter/#unlink-twitter-account
       # @return [Feedlr::Success]
       def unlink_twitter
-        build_object(:delete , '/twitter/auth')
+        build_object(:delete, '/twitter/auth')
       end
 
       # Get suggested feeds
@@ -22,7 +22,7 @@ module Feedlr
       # @see http://developer.feedly.com/v3/twitter/#get-suggested-feeds
       # @return [Feedlr::Collection]
       def twitter_suggestions
-        build_object(:get , '/twitter/suggestions')
+        build_object(:get, '/twitter/suggestions')
       end
     end
   end

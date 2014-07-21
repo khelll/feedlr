@@ -9,7 +9,7 @@ module Feedlr
       # @see http://developer.feedly.com/v3/tags/#get-the-list-of-tags-created-by-the-user
       # @return [Feedlr::Collection]
       def user_tags
-        build_object(:get , '/tags')
+        build_object(:get, '/tags')
       end
 
       # Tag an existing entry
@@ -18,8 +18,8 @@ module Feedlr
       # @param entry_id [String]
       # @param tags_ids [#to_ary] list of tags ids
       # @return [Feedlr::Success]
-      def tag_entry(entry_id , tags_ids)
-        tag_entries([entry_id] , tags_ids)
+      def tag_entry(entry_id, tags_ids)
+        tag_entries([entry_id], tags_ids)
       end
 
       # Tag multiple entries
@@ -28,9 +28,9 @@ module Feedlr
       # @param entries_ids [#to_ary] list of entries ids
       # @param tags_ids [#to_ary] list of tags ids
       # @return [Feedlr::Success]
-      def tag_entries(entries_ids , tags_ids)
+      def tag_entries(entries_ids, tags_ids)
         tags_query = join_ids(tags_ids)
-        build_object(:put , "/tags/#{tags_query}",
+        build_object(:put, "/tags/#{tags_query}",
                      entryIds: entries_ids.to_ary)
       end
 
@@ -40,8 +40,8 @@ module Feedlr
       # @param entry_id [String]
       # @param tags_ids [#to_ary] list of tags ids
       # @return [Feedlr::Success]
-      def untag_entry(entry_id , tags_ids)
-        untag_entries([entry_id] , tags_ids)
+      def untag_entry(entry_id, tags_ids)
+        untag_entries([entry_id], tags_ids)
       end
 
       # Untag multiple entries
@@ -50,10 +50,10 @@ module Feedlr
       # @param entries_ids [#to_ary] list of entries ids
       # @param tags_ids [#to_ary] list of tags ids
       # @return [Feedlr::Success]
-      def untag_entries(entries_ids , tags_ids)
+      def untag_entries(entries_ids, tags_ids)
         tags_query = join_ids(tags_ids)
         entries_query = join_ids(entries_ids)
-        build_object(:delete , "/tags/#{tags_query}/#{entries_query}")
+        build_object(:delete, "/tags/#{tags_query}/#{entries_query}")
       end
 
       # Change a tag label
@@ -62,8 +62,8 @@ module Feedlr
       # @param tag_id [String]
       # @param new_value [String] label's new value
       # @return [Feedlr::Success]
-      def change_tag_label(tag_id , new_value)
-        build_object(:post , "/tags/#{CGI.escape(tag_id) }" , label: new_value)
+      def change_tag_label(tag_id, new_value)
+        build_object(:post, "/tags/#{CGI.escape(tag_id)}", label: new_value)
       end
 
       # Delete a tag
@@ -82,7 +82,7 @@ module Feedlr
       # @return [Feedlr::Success]
       def delete_tags(tags_ids)
         tags_query = join_ids(tags_ids)
-        build_object(:delete , "/tags/#{tags_query }")
+        build_object(:delete, "/tags/#{tags_query}")
       end
       
     end

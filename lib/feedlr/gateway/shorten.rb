@@ -10,7 +10,7 @@ module Feedlr
       # @param entry_id [String]
       # @return [String]
       def shorten_entry(entry_id)
-        build_object(:get , "/shorten/entries/#{CGI.escape(entry_id) }")
+        build_object(:get, "/shorten/entries/#{CGI.escape(entry_id)}")
       end
     end
   end

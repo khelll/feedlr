@@ -20,7 +20,7 @@ module Feedlr
       #  Articles from the first n hours will be returned first
       # @option options [String] :locale preferred locale for results
       # @return [Feedlr::Base]
-      def stream_most_engaging(stream_id , options = {})
+      def stream_most_engaging(stream_id, options = {})
         build_object(:get, '/mixes/contents',
                      { streamId: stream_id }.merge(options.to_hash))
       end
