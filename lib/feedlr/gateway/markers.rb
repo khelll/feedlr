@@ -17,7 +17,7 @@ module Feedlr
       # @return [Feedlr::Base]
       def user_unread_counts(options = {})
         options = options.to_hash
-        build_object(method: :get, path: '/markers/counts', params: options)
+        request_with_object(method: :get, path: '/markers/counts', params: options)
       end
 
       # Mark an articles as read
@@ -35,11 +35,11 @@ module Feedlr
       # @param articles_ids [#to_ary]
       # @return [Feedlr::Success]
       def mark_articles_as_read(articles_ids)
-        build_object(method: :post, path: '/markers',
-                     params: { entryIds: articles_ids.to_ary,
-                               action: 'markAsRead',
-                               type: 'entries' }
-                     )
+        request_with_object(method: :post, path: '/markers',
+                            params: { entryIds: articles_ids.to_ary,
+                                      action: 'markAsRead',
+                                      type: 'entries' }
+                            )
       end
 
       # Keep an article as unread
@@ -57,11 +57,14 @@ module Feedlr
       # @param articles_ids [#to_ary]
       # @return [Feedlr::Success]
       def mark_articles_as_unread(articles_ids)
-        build_object(method: :post, path: '/markers',
-                     params: { entryIds: articles_ids.to_ary,
-                               action: 'keepUnread',
-                               type: 'entries' }
-                     )
+        request_with_object(method: :post,
+                            path: '/markers',
+                            params: {
+                              entryIds: articles_ids.to_ary,
+                              action: 'keepUnread',
+                              type: 'entries'
+                            }
+                            )
       end
 
       # Mark feeds as read
@@ -93,7 +96,7 @@ module Feedlr
         opts[:lastReadEntryId] =
           options[:lastReadEntryId] if options[:lastReadEntryId]
         opts[:asOf] = options[:asOf] if options[:asOf]
-        build_object(method: :post, path: '/markers', params: opts)
+        request_with_object(method: :post, path: '/markers', params: opts)
       end
 
       # Mark a category as read
@@ -125,7 +128,7 @@ module Feedlr
         opts[:lastReadEntryId] =
           options[:lastReadEntryId] if options[:lastReadEntryId]
         opts[:asOf] = options[:asOf] if options[:asOf]
-        build_object(method: :post, path: '/markers', params: opts)
+        request_with_object(method: :post, path: '/markers', params: opts)
       end
 
       # Undo mark a feed as read
@@ -143,11 +146,11 @@ module Feedlr
       # @param feeds_ids [#to_ary]
       # @return [Feedlr::Success]
       def undo_mark_feeds_as_read(feeds_ids)
-        build_object(method: :post, path: '/markers',
-                     params: { feedIds: feeds_ids.to_ary,
-                               action: 'undoMarkAsRead',
-                               type: 'feeds' }
-                     )
+        request_with_object(method: :post, path: '/markers',
+                            params: { feedIds: feeds_ids.to_ary,
+                                      action: 'undoMarkAsRead',
+                                      type: 'feeds' }
+                            )
       end
 
       # Undo Mark a category as read
@@ -165,11 +168,14 @@ module Feedlr
       # @param categories_ids [#to_ary]
       # @return [Feedlr::Success]
       def undo_mark_categories_as_read(categories_ids)
-        build_object(method: :post, path: '/markers',
-                     params: { categoryIds: categories_ids.to_ary,
-                               action: 'undoMarkAsRead',
-                               type: 'categories' }
-                     )
+        request_with_object(method: :post,
+                            path: '/markers',
+                            params: {
+                              categoryIds: categories_ids.to_ary,
+                              action: 'undoMarkAsRead',
+                              type: 'categories'
+                            }
+                            )
       end
 
       # Get the latest read operations (to sync local cache)
@@ -179,7 +185,9 @@ module Feedlr
       # @option options [String] :newerThan timestamp in ms. Default is 30 days.
       # @return [Feedlr::Base]
       def sync_read_counts(options = {})
-        build_object(method: :get, path: '/markers/reads', params: options)
+        request_with_object(method: :get,
+                            path: '/markers/reads',
+                            params: options)
       end
 
       # Get the latest tagged entry ids
@@ -189,7 +197,9 @@ module Feedlr
       # @option options [String] :newerThan timestamp in ms. Default is 30 days.
       # @return [Feedlr::Base]
       def lastest_tagged_entries(options = {})
-        build_object(method: :get, path: '/markers/tags', params: options)
+        request_with_object(method: :get,
+                            path: '/markers/tags',
+                            params: options)
       end
     end
   end

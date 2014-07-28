@@ -1,3 +1,4 @@
+require_relative 'http'
 require_relative 'request'
 require_relative 'utils'
 require_relative 'gateway/api'
@@ -5,7 +6,7 @@ require_relative 'gateway/api'
 module Feedlr
   # Feedlr Client
   class Client
-    include Request
+    include HTTP
     include Utils
     include Gateway::API
     attr_reader :oauth_access_token, :sandbox, :logger

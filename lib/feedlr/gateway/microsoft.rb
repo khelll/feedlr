@@ -14,7 +14,8 @@ module Feedlr
       # @see http://developer.feedly.com/v3/microsoft/#unlink-windows-live-account
       # @return [Feedlr::Success]
       def unlink_microsoft
-        build_object(method: :delete, path: '/microsoft/liveAuth')
+        request_with_object(method: :delete,
+                            path: '/microsoft/liveAuth')
       end
 
       # Add an article in OneNote
@@ -23,8 +24,9 @@ module Feedlr
       # @param entry_id [String]
       # @return [Feedlr::Success]
       def add_to_onenote(entry_id)
-        build_object(method: :post, path: '/microsoft/oneNoteAdd',
-                     params: { entryId: entry_id })
+        request_with_object(method: :post,
+                            path: '/microsoft/oneNoteAdd',
+                            params: { entryId: entry_id })
       end
     end
   end

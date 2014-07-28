@@ -19,7 +19,9 @@ module Feedlr
       # @param feeds_ids [#to_ary] list of ids
       # @return [Feedlr::Collection]
       def feeds(feeds_ids)
-        build_object(method: :post, path: '/feeds/.mget', params: feeds_ids)
+        request_with_object(method: :post,
+                            path: '/feeds/.mget',
+                            params: feeds_ids)
       end
     end
   end

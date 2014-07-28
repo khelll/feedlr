@@ -9,8 +9,9 @@ module Feedlr
       # @see http://developer.feedly.com/v3/opml/#export-the-users-subscriptions-as-an-opml-file
       # @return [Feedlr::Base]
       def user_opml
-        build_object(method: :get, path: '/opml', params: {},
-                     headers: { :'Content-Type' => 'text/xml' })
+        request_with_object(method: :get,
+                            path: '/opml', params: {},
+                            headers: { :'Content-Type' => 'text/xml' })
       end
 
       # Import an OPML
@@ -25,8 +26,8 @@ module Feedlr
       # @return [Feedlr::Success]
       def import_opml(file)
         contents = read_file_contents(file)
-        build_object(method: :post, path: '/opml', params: contents,
-                     headers: { :'Content-Type' => 'text/xml' })
+        request_with_object(method: :post, path: '/opml', params: contents,
+                            headers: { :'Content-Type' => 'text/xml' })
       end
 
     end

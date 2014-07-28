@@ -13,7 +13,8 @@ module Feedlr
       # @see http://developer.feedly.com/v3/facebook/#unlink-facebook-account
       # @return [Feedlr::Success]
       def unlink_facebook
-        build_object(method: :delete, path: '/facebook/auth')
+        request_with_object(method: :delete,
+                            path: '/facebook/auth')
       end
 
       # Get suggested feeds
@@ -21,7 +22,8 @@ module Feedlr
       # @see http://developer.feedly.com/v3/facebook/#get-suggested-feeds
       # @return [Feedlr::Collection]
       def facebook_suggestions
-        build_object(method: :get, path: '/facebook/suggestions')
+        request_with_object(method: :get,
+                            path: '/facebook/suggestions')
       end
     end
   end

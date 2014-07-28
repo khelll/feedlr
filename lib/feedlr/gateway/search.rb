@@ -14,8 +14,8 @@ module Feedlr
       #  to return feeds in that locale (e.g. "pt",  "fr_FR")
       # @return [Feedlr::Base]
       def search_feeds(query, options = {})
-        build_object(method: :get, path: '/search/feeds',
-                     params: { q: query }.merge(options.to_hash))
+        request_with_object(method: :get, path: '/search/feeds',
+                            params: { q: query }.merge(options.to_hash))
       end
 
       # Search the content of a stream (Pro only)
@@ -34,9 +34,10 @@ module Feedlr
       #  search terms to match before
       # @return [Feedlr::Base]
       def search_stream(stream_id, query, options = {})
-        build_object(method: :get, path: '/search/contents',
-                     params: { q: query, streamId: stream_id }
-                     .merge(options.to_hash))
+        request_with_object(method: :get,
+                            path: '/search/contents',
+                            params: { q: query, streamId: stream_id }
+                            .merge(options.to_hash))
       end
     end
   end

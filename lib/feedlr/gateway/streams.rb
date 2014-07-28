@@ -18,9 +18,9 @@ module Feedlr
       #  used to page through the entry ids
       # @return [Feedlr::Base]
       def stream_entries_ids(stream_id, options = {})
-        build_object(method: :get,
-                     path: "/streams/#{CGI.escape(stream_id)}/ids",
-                     params: options)
+        request_with_object(method: :get,
+                            path: "/streams/#{CGI.escape(stream_id)}/ids",
+                            params: options)
       end
       # Get the content of a stream
       #
@@ -36,9 +36,9 @@ module Feedlr
       #  is used to page through the entry ids
       # @return [Feedlr::Base]
       def stream_entries_contents(stream_id, options = {})
-        build_object(method: :get,
-                     path: "/streams/#{CGI.escape(stream_id)}/contents",
-                     params: options)
+        request_with_object(method: :get,
+                            path: "/streams/#{CGI.escape(stream_id)}/contents",
+                            params: options)
       end
     end
   end
