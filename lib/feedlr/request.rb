@@ -14,12 +14,17 @@ module Feedlr
     private
 
     # Run an HTTP request and map the response to a domain class
-    # @param method [String] HTTP method
-    # @param path [String]
-    # @param params [Hash]
-    # @param headers [Hash]
+    # @param [Hash] request request options
+    # @option request [String] :method
+    # @option request [String] :path
+    # @option request [String] :params
+    # @option request [String] :headers
     # @return [Faraday::Response]
-    def build_object(method, path, params = nil, headers = nil)
+    def build_object(request)
+      method = request.fetch(:method)
+      path = request.fetch(:path)
+      params = request.fetch(:params) { nil }
+      headers = request.fetch(:headers) { nil }
       response = send(method, path, params, headers)
       Factory.create(response.body)
     end

@@ -15,11 +15,13 @@ describe Feedlr::Request do
         headers = { h1: 'h1one', h2: 'h2one' }
         expect(client).to receive(verb)
         .with('/categories', params, headers)
-        client.send(:build_object, verb, '/categories', params, headers)
+        client.send(:build_object,
+                    method: verb, path: '/categories',
+                    params: params, headers: headers)
       end
 
       it 'builds an object' do
-        res = client.send(:build_object, verb, '/categories')
+        res = client.send(:build_object, method: verb, path: '/categories')
         expect(res).to be_a(Feedlr::Base)
       end
     end

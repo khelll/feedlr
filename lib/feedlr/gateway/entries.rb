@@ -22,9 +22,9 @@ module Feedlr
       # @return [Feedlr::Collection]
       def user_entries(entries_ids,  options =  {})
         options = options.to_hash
-        build_object(:post, '/entries/.mget',
-                     continuation: options[:continuation],
-                     ids: entries_ids.to_ary
+        build_object(method: :post, path: '/entries/.mget',
+                     params: { continuation: options[:continuation],
+                               ids: entries_ids.to_ary }
                      )
       end
 
@@ -34,7 +34,7 @@ module Feedlr
       # @param entry [#to_hash]
       # @return [String]
       def add_entry(entry)
-        build_object(:post, '/entries',  entry).first
+        build_object(method: :post, path: '/entries', params: entry).first
       end
     end
   end

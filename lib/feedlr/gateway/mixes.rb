@@ -21,8 +21,8 @@ module Feedlr
       # @option options [String] :locale preferred locale for results
       # @return [Feedlr::Base]
       def stream_most_engaging(stream_id, options = {})
-        build_object(:get, '/mixes/contents',
-                     { streamId: stream_id }.merge(options.to_hash))
+        build_object(method: :get, path: '/mixes/contents',
+                     params: { streamId: stream_id }.merge(options.to_hash))
       end
     end
   end
