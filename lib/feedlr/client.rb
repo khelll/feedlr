@@ -1,5 +1,4 @@
 require_relative 'http'
-require_relative 'request'
 require_relative 'utils'
 require_relative 'gateway/api'
 

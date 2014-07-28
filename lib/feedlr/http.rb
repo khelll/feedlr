@@ -1,8 +1,9 @@
 require 'faraday'
 require 'faraday_middleware'
+require_relative 'request'
+require_relative 'response'
 require_relative 'factory'
 require_relative 'error'
-require_relative 'response'
 
 module Feedlr
   # Do all http requests and call the mapper
