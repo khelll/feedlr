@@ -17,10 +17,10 @@ module Feedlr
     # @option options [#debug,#info] :logger
     # @return [Feedlr::Client]
     def initialize(options = {})
-      @oauth_access_token = options.fetch(:oauth_access_token) do
+      self.oauth_access_token = options.fetch(:oauth_access_token) do
         Feedlr.oauth_access_token
       end
-      @logger = options.fetch(:logger) { Feedlr.logger }
+      self.logger = options.fetch(:logger) { Feedlr.logger }
       self.sandbox = options.fetch(:sandbox) { Feedlr.sandbox }
     end
 
@@ -36,6 +36,8 @@ module Feedlr
     alias_method :sandbox?, :sandbox
 
     private
+
+    attr_writer :logger, :oauth_access_token
 
     def sandbox=(value)
       @sandbox = boolean(value)
