@@ -17,7 +17,9 @@ module Feedlr
       # @return [Feedlr::Base]
       def user_unread_counts(options = {})
         options = options.to_hash
-        request_with_object(method: :get, path: '/markers/counts', params: options)
+        request_with_object(method: :get,
+                            path: '/markers/counts',
+                            params: options)
       end
 
       # Mark an articles as read
@@ -83,19 +85,12 @@ module Feedlr
       # @param feeds_ids [#to_ary]
       # @param options [#to_hash]
       # @option options [String] :lastReadEntryId
-      # @option options [String] :asOf timestamp
+      # @option options [String] :as_of timestamp
       # @return [Feedlr::Success]
       def mark_feeds_as_read(feeds_ids, options)
-        options = options.to_hash
-        fail(ArgumentError) unless options[:lastReadEntryId] || options[:asOf]
-        opts =  {
-          feedIds: feeds_ids.to_ary,
-          action: 'markAsRead',
-          type: 'feeds'
-        }
-        opts[:lastReadEntryId] =
-          options[:lastReadEntryId] if options[:lastReadEntryId]
-        opts[:asOf] = options[:asOf] if options[:asOf]
+        opts = markers_options({ feedIds: feeds_ids.to_ary,
+                                 action: 'markAsRead',
+                                 type: 'feeds' }, options)
         request_with_object(method: :post, path: '/markers', params: opts)
       end
 
@@ -115,19 +110,12 @@ module Feedlr
       # @param categories_ids [#to_ary]
       # @param options [#to_hash]
       # @option options [String] :lastReadEntryId
-      # @option options [String] :asOf timestamp
+      # @option options [String] :as_of timestamp
       # @return [Feedlr::Success]
       def mark_categories_as_read(categories_ids, options)
-        options = options.to_hash
-        fail(ArgumentError) unless options[:lastReadEntryId] || options[:asOf]
-        opts =  {
-          categoryIds: categories_ids.to_ary,
-          action: 'markAsRead',
-          type: 'categories'
-        }
-        opts[:lastReadEntryId] =
-          options[:lastReadEntryId] if options[:lastReadEntryId]
-        opts[:asOf] = options[:asOf] if options[:asOf]
+        opts = markers_options({ categoryIds: categories_ids.to_ary,
+                                 action: 'markAsRead',
+                                 type: 'categories' }, options)
         request_with_object(method: :post, path: '/markers', params: opts)
       end
 
@@ -200,6 +188,18 @@ module Feedlr
         request_with_object(method: :get,
                             path: '/markers/tags',
                             params: options)
+      end
+
+      private
+
+      def markers_options(initial_options, options)
+        options = options.to_hash
+        as_of, last_read_entry_id = options[:asOf], options[:lastReadEntryId]
+        fail(ArgumentError) unless last_read_entry_id || as_of
+        initial_options[:lastReadEntryId] =
+          last_read_entry_id if last_read_entry_id
+        initial_options[:asOf] = as_of if as_of
+        initial_options
       end
     end
   end
