@@ -85,7 +85,7 @@ module Feedlr
       # @param feeds_ids [#to_ary]
       # @param options [#to_hash]
       # @option options [String] :lastReadEntryId
-      # @option options [String] :as_of timestamp
+      # @option options [String] :asOf timestamp
       # @return [Feedlr::Success]
       def mark_feeds_as_read(feeds_ids, options)
         opts = markers_options({ feedIds: feeds_ids.to_ary,
@@ -110,7 +110,7 @@ module Feedlr
       # @param categories_ids [#to_ary]
       # @param options [#to_hash]
       # @option options [String] :lastReadEntryId
-      # @option options [String] :as_of timestamp
+      # @option options [String] :asOf timestamp
       # @return [Feedlr::Success]
       def mark_categories_as_read(categories_ids, options)
         opts = markers_options({ categoryIds: categories_ids.to_ary,
