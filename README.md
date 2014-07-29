@@ -4,6 +4,31 @@
 
 A Ruby interface to Feedly's [API](http://developer.feedly.com/).
 
+## API Support
+
+- [x] Categories API
+- [x] Entries API
+- [x] Evernote API
+- [x] Facebook API
+- [x] Feeds API
+- [x] Markers API
+- [x] Microsoft API
+- [x] Mixes API
+- [x] OPML API
+- [x] Preferences API
+- [x] Profile API
+- [x] Search API
+- [x] Streams API
+- [x] Subscriptions API
+- [x] Tags API
+- [x] Topics API
+- [x] Twitter API
+- [x] URL Shortener API
+
+## Supported Ruby Versions
+
+Feedlr is tested under 1.9.2, 1.9.3, 2.0.0, 2.1, JRuby (1.9 mode) and Rubinius 2.2.7.
+
 ## Installation
 
 Add this line to your application's Gemfile:
