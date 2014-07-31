@@ -61,11 +61,9 @@ module Feedlr
       def mark_articles_as_unread(articles_ids)
         request_with_object(method: :post,
                             path: '/markers',
-                            params: {
-                              entryIds: articles_ids.to_ary,
-                              action: 'keepUnread',
-                              type: 'entries'
-                            }
+                            params: { entryIds: articles_ids.to_ary,
+                                      action: 'keepUnread',
+                                      type: 'entries' }
                             )
       end
 
@@ -88,10 +86,9 @@ module Feedlr
       # @option options [String] :asOf timestamp
       # @return [Feedlr::Success]
       def mark_feeds_as_read(feeds_ids, options)
-        opts = markers_options({ feedIds: feeds_ids.to_ary,
-                                 action: 'markAsRead',
-                                 type: 'feeds' }, options)
-        request_with_object(method: :post, path: '/markers', params: opts)
+        mark_items({ feedIds: feeds_ids.to_ary,
+                     action: 'markAsRead',
+                     type: 'feeds' }, options)
       end
 
       # Mark a category as read
@@ -113,10 +110,9 @@ module Feedlr
       # @option options [String] :asOf timestamp
       # @return [Feedlr::Success]
       def mark_categories_as_read(categories_ids, options)
-        opts = markers_options({ categoryIds: categories_ids.to_ary,
-                                 action: 'markAsRead',
-                                 type: 'categories' }, options)
-        request_with_object(method: :post, path: '/markers', params: opts)
+        mark_items({ categoryIds: categories_ids.to_ary,
+                     action: 'markAsRead',
+                     type: 'categories' }, options)
       end
 
       # Undo mark a feed as read
@@ -158,11 +154,9 @@ module Feedlr
       def undo_mark_categories_as_read(categories_ids)
         request_with_object(method: :post,
                             path: '/markers',
-                            params: {
-                              categoryIds: categories_ids.to_ary,
-                              action: 'undoMarkAsRead',
-                              type: 'categories'
-                            }
+                            params: { categoryIds: categories_ids.to_ary,
+                                      action: 'undoMarkAsRead',
+                                      type: 'categories' }
                             )
       end
 
@@ -192,14 +186,15 @@ module Feedlr
 
       private
 
-      def markers_options(initial_options, options)
+      def mark_items(initial_options, options)
         options = options.to_hash
         as_of, last_read_entry_id = options[:asOf], options[:lastReadEntryId]
         fail(ArgumentError) unless last_read_entry_id || as_of
         initial_options[:lastReadEntryId] =
           last_read_entry_id if last_read_entry_id
         initial_options[:asOf] = as_of if as_of
-        initial_options
+        request_with_object(method: :post, path: '/markers',
+                            params: initial_options)
       end
     end
   end

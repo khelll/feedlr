@@ -24,10 +24,8 @@ module Feedlr
         options = options.to_hash
         request_with_object(method: :post,
                             path: '/entries/.mget',
-                            params: {
-                              continuation: options[:continuation],
-                              ids: entries_ids.to_ary
-                            }
+                            params: { continuation: options[:continuation],
+                                      ids: entries_ids.to_ary }
                             )
       end
 
