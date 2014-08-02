@@ -39,6 +39,16 @@ module Feedlr
       include Twitter
       include Microsoft
       include Evernote
+
+      # Returns the public interface of the client
+      # @return [Array]
+      def api_methods
+        @api_methods ||= begin
+          current_module = Feedlr::Gateway::API
+          modules = current_module.ancestors - [current_module]
+          modules.reduce([]) { |a, e| a + e.instance_methods }
+        end
+      end
     end
   end
 end

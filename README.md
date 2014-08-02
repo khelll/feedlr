@@ -63,7 +63,7 @@ You can easily inspect the available client methods:
 ```ruby
 require 'feedlr'
 client = Feedlr::Client.new
-p client.methods.sort - Object.methods
+p client.api_methods
 ```
 
 Also, the gem is fairly documented. Browse the YARD [documentaion](http://rubydoc.info/gems/feedlr/) for more information.
