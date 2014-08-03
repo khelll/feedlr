@@ -61,7 +61,6 @@ p client.user_subscriptions
 You can easily inspect the available client methods:
 
 ```ruby
-require 'feedlr'
 client = Feedlr::Client.new
 p client.api_methods
 ```
@@ -89,13 +88,36 @@ client = Feedlr::Client.new
 You can set the oauth access token, a custom logger(if needed) and whether or not to use the client on sandbox(develpment) mode:
 
 ```ruby
-require 'feedlr'
 require 'logger'
 client = Feedlr::Client.new(
   oauth_access_token: 'oauth access token',
   sandbox: true,
   logger: Logger.new(STDOUT)
 )
+```
+
+### Pagination
+
+Some requests support pagination(continuation)
+  
+```ruby
+cursor = client.stream_entries_contents(stream_id)
+cursor.each { |page| p page.items.map(&:title) }
+```
+
+For those requests, you will get enumerable paginated results `Feedlr::Cursor`. Calling `each` or `each_page` on a `Feedlr::Cursor` object yields the response and any follow up responses.
+
+There are a few other helper methods that make it easy to control response paging:
+  
+```ruby
+cursor.last_page? #=> false
+cursor.next_page? #=> true
+ 
+# gets the next page, retunrs nil for the last page
+resp = cursor.next_page
+ 
+# gets each response in a loop
+resp = cursor.next_page until cursor.last_page?
 ```
 
 ### Rate limiting

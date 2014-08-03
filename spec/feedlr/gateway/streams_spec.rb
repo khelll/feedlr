@@ -14,12 +14,14 @@ describe Feedlr::Gateway::Streams, vcr: { record: :new_episodes } do
       stub = stub_request(:get, 'http://sandbox.feedly.com/v3/streams/'\
         "#{CGI.escape(stream)}/ids")
       .with(query: options.to_hash)
-      client.stream_entries_ids(stream, options)
+      subject = client.stream_entries_ids(stream, options)
+      subject.first
       expect(stub).to have_been_requested
     end
 
     it 'resoponds with hashie object' do
-      subject = client.stream_entries_ids(stream, options)
+      result = client.stream_entries_ids(stream, options)
+      subject = result.first
       expect(subject.ids.size).to be >= 5
     end
   end
@@ -29,12 +31,14 @@ describe Feedlr::Gateway::Streams, vcr: { record: :new_episodes } do
       stub = stub_request(:get, 'http://sandbox.feedly.com/v3/streams/'\
         "#{CGI.escape(stream)}/contents").with(query: options.to_hash)
 
-      client.stream_entries_contents(stream, options)
+      result = client.stream_entries_contents(stream, options)
+      result.first
       expect(stub).to have_been_requested
     end
 
     it 'resoponds with hashie object' do
-      subject = client.stream_entries_contents(stream, options)
+      result = client.stream_entries_contents(stream, options)
+      subject = result.first
       expect(subject.items.size).to be >= 5
     end
   end

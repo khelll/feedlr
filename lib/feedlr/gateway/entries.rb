@@ -17,16 +17,11 @@ module Feedlr
       #
       # @see http://developer.feedly.com/v3/entries/#get-the-content-for-a-dynamic-list-of-entries
       # @param entries_ids [#to_ary] list of ids
-      # @param options [#to_hash]
-      # @option options [String] :continuation next cursor id
       # @return [Feedlr::Collection]
-      def user_entries(entries_ids,  options =  {})
-        options = options.to_hash
+      def user_entries(entries_ids)
         request_with_object(method: :post,
                             path: '/entries/.mget',
-                            params: { continuation: options[:continuation],
-                                      ids: entries_ids.to_ary }
-                            )
+                            params: { ids: entries_ids.to_ary })
       end
 
       # Create and tag an entry

@@ -2,6 +2,7 @@ require 'faraday'
 require 'faraday_middleware'
 require_relative 'request'
 require_relative 'factory'
+require_relative 'cursor'
 
 module Feedlr
   # Do all http requests and call the mapper
@@ -9,7 +10,7 @@ module Feedlr
     ENDPOINT = 'http://cloud.feedly.com'
     SANDBOX_ENDPOINT = 'http://sandbox.feedly.com'
     API_VERSION = '/v3'
-    
+
     private
 
     # Initiate and memoize the HTTP connection object
@@ -25,10 +26,23 @@ module Feedlr
     # @option request_attributes [String] :path
     # @option request_attributes [String] :params
     # @option request_attributes [String] :headers
-    # @return [Faraday::Response]
+    # @return [Feedlr::Base, Feedlr::Success, Feedlr::Collection]
     def request_with_object(request_attributes)
-      response = Request.new(request_attributes.merge(client: self)).perform
+      request_attributes = request_attributes.merge(client: self)
+      response = Request.new(request_attributes).perform
       Factory.create(response.body)
+    end
+
+    # Gets an enumerable cursor for an HTTP request
+    # @param [Hash] request_attributes request options
+    # @option request_attributes [Symbol] :method
+    # @option request_attributes [String] :path
+    # @option request_attributes [String] :params
+    # @option request_attributes [String] :headers
+    # @return [Faraday::Cursor]
+    def request_with_cursor(request_attributes)
+      request_attributes = request_attributes.merge(client: self)
+      Feedlr::Cursor.new(request_attributes)
     end
 
 

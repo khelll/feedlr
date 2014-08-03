@@ -4,7 +4,8 @@ require 'coveralls'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter]
+  Coveralls::SimpleCov::Formatter
+]
 
 SimpleCov.start do
   add_filter '/spec/'
@@ -19,8 +20,6 @@ require 'webmock/rspec'
 require 'vcr'
 require 'cgi'
 require 'multi_json'
-
-
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/cassettes'

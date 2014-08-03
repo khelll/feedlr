@@ -26,15 +26,13 @@ module Feedlr
       # @param options [#to_hash]
       # @option options [String] :count number of entries to return
       # @option options [String] :newerThan timestamp in ms
-      # @option options [String] :continuation a continuation id is used
-      #  to page through the content
       # @option options [String] :unreadOnly boolean,  default is false
       # @option options [String] :fields a comma-separated list of fields
       # @option options [String] :minMatches minimum number of
       #  search terms to match before
-      # @return [Feedlr::Base]
+      # @return [Feedlr::Cursor]
       def search_stream(stream_id, query, options = {})
-        request_with_object(method: :get,
+        request_with_cursor(method: :get,
                             path: '/search/contents',
                             params: { q: query, streamId: stream_id }
                             .merge(options.to_hash))

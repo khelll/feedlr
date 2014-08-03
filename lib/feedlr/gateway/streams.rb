@@ -14,11 +14,10 @@ module Feedlr
       # @option options [String] :ranked newest or oldest. default is newest
       # @option options [String] :unreadOnly boolean default value is false
       # @option options [String] :newerThan timestamp in ms
-      # @option options [String] :continuation a continuation id is
       #  used to page through the entry ids
-      # @return [Feedlr::Base]
+      # @return [Feedlr::Cursor]
       def stream_entries_ids(stream_id, options = {})
-        request_with_object(method: :get,
+        request_with_cursor(method: :get,
                             path: "/streams/#{CGI.escape(stream_id)}/ids",
                             params: options)
       end
@@ -32,11 +31,10 @@ module Feedlr
       # @option options [String] :ranked newest or oldest. default is newest
       # @option options [String] :unreadOnly boolean default value is false
       # @option options [String] :newerThan timestamp in ms
-      # @option options [String] :continuation a continuation id
       #  is used to page through the entry ids
-      # @return [Feedlr::Base]
+      # @return [Feedlr::Cursor]
       def stream_entries_contents(stream_id, options = {})
-        request_with_object(method: :get,
+        request_with_cursor(method: :get,
                             path: "/streams/#{CGI.escape(stream_id)}/contents",
                             params: options)
       end
