@@ -101,8 +101,7 @@
 
 <p>You can easily inspect the available client methods:</p>
 
-<div class="highlight highlight-ruby"><pre><span class="nb">require</span> <span class="s1">'feedlr'</span>
-<span class="n">client</span> <span class="o">=</span> <span class="no">Feedlr</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span>
+<div class="highlight highlight-ruby"><pre><span class="n">client</span> <span class="o">=</span> <span class="no">Feedlr</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span>
 <span class="nb">p</span> <span class="n">client</span><span class="o">.</span><span class="n">api_methods</span>
 </pre></div>
 
@@ -130,13 +129,35 @@
 
 <p>You can set the oauth access token, a custom logger(if needed) and whether or not to use the client on sandbox(develpment) mode:</p>
 
-<div class="highlight highlight-ruby"><pre><span class="nb">require</span> <span class="s1">'feedlr'</span>
-<span class="nb">require</span> <span class="s1">'logger'</span>
+<div class="highlight highlight-ruby"><pre><span class="nb">require</span> <span class="s1">'logger'</span>
 <span class="n">client</span> <span class="o">=</span> <span class="no">Feedlr</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
   <span class="ss">oauth_access_token</span><span class="p">:</span> <span class="s1">'oauth access token'</span><span class="p">,</span>
   <span class="ss">sandbox</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
   <span class="ss">logger</span><span class="p">:</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">STDOUT</span><span class="p">)</span>
 <span class="p">)</span>
+</pre></div>
+
+<h3>
+<a name="pagination" class="anchor" href="#pagination"><span class="octicon octicon-link"></span></a>Pagination</h3>
+
+<p>Some requests support pagination(continuation)</p>
+
+<div class="highlight highlight-ruby"><pre><span class="n">cursor</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">stream_entries_contents</span><span class="p">(</span><span class="n">stream_id</span><span class="p">)</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">page</span><span class="o">|</span> <span class="nb">p</span> <span class="n">page</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:title</span><span class="p">)</span> <span class="p">}</span>
+</pre></div>
+
+<p>For those requests, you will get enumerable paginated results <code>Feedlr::Cursor</code>. Calling <code>each</code> or <code>each_page</code> on a <code>Feedlr::Cursor</code> object yields the response and any follow up responses.</p>
+
+<p>There are a few other helper methods that make it easy to control response paging:</p>
+
+<div class="highlight highlight-ruby"><pre><span class="n">cursor</span><span class="o">.</span><span class="n">last_page?</span> <span class="c1">#=&gt; false</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">next_page?</span> <span class="c1">#=&gt; true</span>
+
+<span class="c1"># gets the next page, retunrs nil for the last page</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">next_page</span>
+
+<span class="c1"># gets each response in a loop</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">next_page</span> <span class="k">until</span> <span class="n">cursor</span><span class="o">.</span><span class="n">last_page?</span>
 </pre></div>
 
 <h3>
