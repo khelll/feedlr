@@ -13,7 +13,8 @@ module Feedlr
           401 => Feedlr::Error::Unauthorized,
           403 => Feedlr::Error::Forbidden,
           404 => Feedlr::Error::NotFound,
-          500 => Feedlr::Error::InternalServerError
+          500 => Feedlr::Error::InternalServerError,
+          503 => Feedlr::Error::ServiceUnavailableError
         }
       end
     end
@@ -48,6 +49,9 @@ module Feedlr
 
     # Raised when Feedlr returns the HTTP status status_code 500
     class InternalServerError < ServerError; end
+
+    # Raised when Feedlr returns the HTTP status status_code 503
+    class ServiceUnavailableError < ServerError; end
 
     # Raised when the request times out
     class RequestTimeout < self; end
