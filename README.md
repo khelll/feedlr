@@ -45,7 +45,7 @@ Or install it yourself as:
 
 ## Usage
 
-### Baisc usage
+### Basic usage
 
 ```ruby
 require 'feedlr'
