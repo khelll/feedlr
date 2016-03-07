@@ -1,7 +1,6 @@
 require 'helper'
 
 describe Feedlr::RateLimit do
-
   describe '#count' do
     it 'returns an Integer when x-ratelimit-count header is set' do
       rate_limit = Feedlr::RateLimit.new('x-ratelimit-count' => '149')
@@ -37,5 +36,4 @@ describe Feedlr::RateLimit do
       expect(rate_limit.remaining).to be_nil
     end
   end
-
 end

@@ -26,7 +26,7 @@ describe Feedlr::Response do
     it 'raises an exception if response code is not a success' do
       response = Feedlr::Response.new(status, headers, body)
       expect { response.raise_http_errors }
-      .to raise_error(Feedlr::Error::BadRequest)
+        .to raise_error(Feedlr::Error::BadRequest)
     end
   end
 
@@ -37,7 +37,7 @@ describe Feedlr::Response do
         body = { 'errorMessage' => error }
         response = Feedlr::Response.new(status, headers, body)
         expect(response.error_message)
-        .to eq("Error #{status} - #{body['errorMessage']}")
+          .to eq("Error #{status} - #{body['errorMessage']}")
       end
     end
     context 'when body is ¬ß hash and has no errorMessage' do
@@ -54,6 +54,5 @@ describe Feedlr::Response do
         expect(response.error_message).to eq("Error #{status} - #{body}")
       end
     end
-
   end
 end

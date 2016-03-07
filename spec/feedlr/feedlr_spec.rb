@@ -21,7 +21,6 @@ describe Feedlr do
     end
   end
 
-
   describe '::sandbox=' do
     it 'should have a boolean value' do
       allow(Feedlr::Utils).to receive(:boolean)
@@ -43,7 +42,7 @@ describe Feedlr do
 
   it 'should be able to set the oAuth access token,' \
   'sandbox and logger' do
-    Feedlr.oauth_access_token  = 'oauth_access_token'
+    Feedlr.oauth_access_token = 'oauth_access_token'
     Feedlr.sandbox = true
     Feedlr.logger = logger
 
@@ -56,7 +55,7 @@ describe Feedlr do
     it 'should be able to set the oAuth access token,' \
     'sandbox and logger via a configure block' do
       Feedlr.configure do |config|
-        config.oauth_access_token  = 'oauth_access_token'
+        config.oauth_access_token = 'oauth_access_token'
         config.sandbox = true
         config.logger = logger
       end
@@ -71,5 +70,4 @@ describe Feedlr do
       expect(res).to eq(true)
     end
   end
-
 end

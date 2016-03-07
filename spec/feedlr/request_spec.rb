@@ -15,9 +15,7 @@ describe Feedlr::Request do
                         params: params)
   end
 
-
   describe '#perform' do
-
     let(:perform) { -> { request.send(:perform) } }
 
     it 'runs the request and verifies it' do
@@ -30,28 +28,27 @@ describe Feedlr::Request do
 
     it 'catches and reraises Faraday timeout errors' do
       allow(request).to receive(:run)
-      .and_raise(Faraday::Error::TimeoutError.new('execution expired'))
+        .and_raise(Faraday::Error::TimeoutError.new('execution expired'))
       expect(perform).to raise_error(Feedlr::Error::RequestTimeout)
     end
 
     it 'catches and reraises Timeout errors' do
       allow(request).to receive(:run)
-      .and_raise(Timeout::Error.new('execution expired'))
+        .and_raise(Timeout::Error.new('execution expired'))
       expect(perform).to raise_error(Feedlr::Error::RequestTimeout)
     end
 
     it 'catches and reraises Faraday client errors' do
       allow(request).to receive(:run)
-      .and_raise(Faraday::Error::ClientError.new('connection failed'))
+        .and_raise(Faraday::Error::ClientError.new('connection failed'))
       expect(perform).to raise_error(Feedlr::Error)
     end
 
     it 'catches and reraises JSON::ParserError errors' do
       allow(request).to receive(:run)
-      .and_raise(JSON::ParserError.new('unexpected token'))
+        .and_raise(JSON::ParserError.new('unexpected token'))
       expect(perform).to raise_error(Feedlr::Error)
     end
-
   end
 
   describe '#params_to_payload' do
@@ -70,7 +67,7 @@ describe Feedlr::Request do
     it 'raises TypeError otherwise' do
       allow(request).to receive(:params).and_return('hello')
       expect { request.send(:params_to_payload) }
-      .to raise_error(TypeError)
+        .to raise_error(TypeError)
     end
   end
 
@@ -84,7 +81,7 @@ describe Feedlr::Request do
     it 'raises TypeError otherwise' do
       allow(request).to receive(:params).and_return('hello')
       expect { request.send(:params_to_hash) }
-      .to raise_error(TypeError)
+        .to raise_error(TypeError)
     end
   end
 end

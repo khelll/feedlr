@@ -21,16 +21,17 @@ module Feedlr
 
     # Generates the error message when available
     def error_message
-      @error_message ||= if body.is_a?(Hash)
-        error_message = body['errorMessage']
-        if error_message
-          "Error #{status} - #{error_message}"
+      @error_message ||=
+        if body.is_a?(Hash)
+          error_message = body['errorMessage']
+          if error_message
+            "Error #{status} - #{error_message}"
+          else
+            "Error #{status}"
+          end
         else
-          "Error #{status}"
+          "Error #{status} - #{body}"
         end
-      else
-        "Error #{status} - #{body}"
-      end
     end
   end
 end

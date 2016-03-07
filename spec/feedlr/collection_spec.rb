@@ -1,7 +1,6 @@
 require 'helper'
 
 describe Feedlr::Collection do
-
   describe '::new' do
     it 'should have empty data when initialized with no data' do
       collection = Feedlr::Collection.new

@@ -45,7 +45,7 @@ module Feedlr
       yield(next_page) until last_page?
     end
 
-    alias_method :each, :each_page
+    alias each each_page
 
     private
 

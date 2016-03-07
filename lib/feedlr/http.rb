@@ -7,9 +7,9 @@ require_relative 'cursor'
 module Feedlr
   # Do all http requests and call the mapper
   module HTTP
-    ENDPOINT = 'http://cloud.feedly.com'
-    SANDBOX_ENDPOINT = 'http://sandbox.feedly.com'
-    API_VERSION = '/v3'
+    ENDPOINT = 'http://cloud.feedly.com'.freeze
+    SANDBOX_ENDPOINT = 'http://sandbox.feedly.com'.freeze
+    API_VERSION = '/v3'.freeze
 
     private
 
@@ -18,7 +18,6 @@ module Feedlr
     def connection
       @connection ||= Faraday.new(end_point, connection_options)
     end
-
 
     # Run an HTTP request and map the response to a domain class
     # @param [Hash] request_attributes request options
@@ -45,11 +44,10 @@ module Feedlr
       Feedlr::Cursor.new(request_attributes)
     end
 
-
     # Build and memoize the connection options
     # @return [Hash]
     def connection_options
-      @connection_options ||=  {
+      @connection_options ||= {
         builder: middleware,
         headers: initial_headers,
         request:  {
@@ -78,7 +76,7 @@ module Feedlr
     # Build the initial request headers
     # @return [Hash]
     def initial_headers
-      @headers = { :"Accept" => 'application/json',
+      @headers = { :Accept => 'application/json',
                    :"Content-Type" => 'application/json',
                    :user_agent => user_agent
                    }

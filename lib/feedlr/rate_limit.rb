@@ -9,7 +9,7 @@ module Feedlr
     # @option attrs [String] :x-ratelimit-limit
     # @option attrs [String] :x-ratelimit-remaining
     # @return [Feedlr::RateLimit]
-    def initialize(attrs =  {})
+    def initialize(attrs = {})
       @count = get_value(attrs['x-ratelimit-count'])
       @limit = get_value(attrs['x-ratelimit-limit'])
       @remaining = get_value(attrs['x-ratelimit-remaining'])

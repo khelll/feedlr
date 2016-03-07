@@ -1,6 +1,6 @@
 require 'helper'
 
-describe Feedlr::Error  do
+describe Feedlr::Error do
   let(:client) { Feedlr::Client.new(sandbox: true) }
   let(:feed_id) { 'feed/http://feeds.engadget.com/weblogsinc/engadget' }
   let(:error) { 'something wrong' }
@@ -19,13 +19,12 @@ describe Feedlr::Error  do
   end
 
   Feedlr::Error.errors.each do |status, exception|
-    context "when HTTP status is #{ status}" do
-      it "raises #{ exception}" do
+    context "when HTTP status is #{status}" do
+      it "raises #{exception}" do
         stub_request(:post, 'http://sandbox.feedly.com/v3/feeds/.mget')
-        .to_return(status: status, body: '{}')
+          .to_return(status: status, body: '{}')
         expect { client.feed(feed_id) }.to raise_error(exception)
       end
     end
   end
-
 end

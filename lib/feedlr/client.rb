@@ -33,7 +33,7 @@ module Feedlr
       new(options.merge(sandbox: true))
     end
 
-    alias_method :sandbox?, :sandbox
+    alias sandbox? sandbox
 
     private
 

@@ -8,7 +8,7 @@ module Feedlr
     class << self
       # @return [Hash]
       def errors
-        @errors ||=  {
+        @errors ||= {
           400 => Feedlr::Error::BadRequest,
           401 => Feedlr::Error::Unauthorized,
           403 => Feedlr::Error::Forbidden,
@@ -24,7 +24,7 @@ module Feedlr
     # @param message [Exception, String]
     # @param rate_limit [Hash]
     # @return [Feedlr::Error]
-    def initialize(message = '', rate_limit =  {})
+    def initialize(message = '', rate_limit = {})
       super(message)
       @rate_limit = Feedlr::RateLimit.new(rate_limit)
     end

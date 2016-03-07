@@ -41,7 +41,6 @@ module Feedlr
 
     attr_accessor :headers, :method, :client, :path, :params
 
-
     # Run, log and wrap the request
     # @return [Feedlr::Response]
     def run_and_log
@@ -104,6 +103,5 @@ module Feedlr
         fail TypeError, "#{params.inspect} to params"
       end
     end
-
   end
 end

@@ -49,7 +49,7 @@ describe Feedlr::Cursor do
 
     before :each do
       allow(cursor).to receive(:perform_request)
-      .and_return(request_response)
+        .and_return(request_response)
     end
 
     it 'returns nil if there are no more pages' do
@@ -64,9 +64,9 @@ describe Feedlr::Cursor do
 
     it 'creates an object' do
       allow(Feedlr::Factory).to receive(:create)
-      .with(request_response.body).and_return(double(continuation: nil))
+        .with(request_response.body).and_return(double(continuation: nil))
       expect(Feedlr::Factory).to receive(:create)
-      .with(request_response.body)
+        .with(request_response.body)
       cursor.next_page
     end
 
@@ -77,9 +77,8 @@ describe Feedlr::Cursor do
 
     it 'returns the response factory' do
       expect(cursor.next_page)
-      .to eq(Feedlr::Base.new(request_response.body))
+        .to eq(Feedlr::Base.new(request_response.body))
     end
-
   end
 
   describe '#each_page' do
@@ -96,16 +95,14 @@ describe Feedlr::Cursor do
         double(body: { e: 5, f: 6 })
       ]
       allow(cursor).to receive(:perform_request)
-      .and_return(request_responses[0])
+        .and_return(request_responses[0])
       expect(cursor).to receive(:perform_request).exactly(4).times
 
       cursor.each_with_index do |_, index|
         allow(cursor).to receive(:perform_request)
-        .and_return(request_responses[index])
+          .and_return(request_responses[index])
       end
-
     end
-
   end
 
   describe '#perform_request' do
@@ -128,7 +125,5 @@ describe Feedlr::Cursor do
       expect(request).to receive(:perform)
       cursor.send(:perform_request)
     end
-
   end
-
 end

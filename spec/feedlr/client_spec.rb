@@ -2,7 +2,6 @@ require 'helper'
 require 'logger'
 
 describe Feedlr::Client do
-
   describe '#sandbox' do
     it 'should default to Feedlr.sandbox if not set' do
       Feedlr.configure do |c|
@@ -51,7 +50,7 @@ describe Feedlr::Client do
       options = { oauth_access_token: 'new_test', logger: Logger.new(STDOUT) }
       allow(Feedlr::Client).to receive(:new)
       expect(Feedlr::Client).to receive(:new)
-      .with(options.merge(sandbox: true))
+        .with(options.merge(sandbox: true))
       Feedlr::Client.sandbox(options)
     end
   end
@@ -62,7 +61,6 @@ describe Feedlr::Client do
       expect(client.sandbox?).to eq(client.sandbox)
     end
   end
-
 
   describe 'sandbox=' do
     it 'should have a boolean value' do

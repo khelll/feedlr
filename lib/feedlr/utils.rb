@@ -3,7 +3,7 @@ module Feedlr
   module Utils
     module_function
 
-    # Join ids 
+    # Join ids
     # @param file [#to_int]
     # @return [String]
     def join_ids(ids)
@@ -16,7 +16,7 @@ module Feedlr
     # @return [String]
     def read_file_contents(file)
       if file.respond_to?(:to_str)
-        File.open(file, 'rb') { |file_obj| file_obj.read }
+        File.open(file, 'rb', &:read)
       else
         file.read
       end
