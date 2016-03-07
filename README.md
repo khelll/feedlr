@@ -99,7 +99,7 @@ client = Feedlr::Client.new(
 ### Pagination
 
 Some requests support pagination(continuation)
-  
+
 ```ruby
 cursor = client.stream_entries_contents(stream_id)
 cursor.each { |page| p page.items.map(&:title) }
@@ -108,14 +108,14 @@ cursor.each { |page| p page.items.map(&:title) }
 For those requests, you will get enumerable paginated results `Feedlr::Cursor`. Calling `each` or `each_page` on a `Feedlr::Cursor` object yields the response and any follow up responses.
 
 There are a few other helper methods that make it easy to control response paging:
-  
+
 ```ruby
 cursor.last_page? #=> false
 cursor.next_page? #=> true
- 
-# gets the next page, retunrs nil for the last page
+
+# gets the next page, returns nil for the last page
 resp = cursor.next_page
- 
+
 # gets each response in a loop
 resp = cursor.next_page until cursor.last_page?
 ```
