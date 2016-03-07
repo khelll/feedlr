@@ -10,12 +10,10 @@ rvm:
   - jruby-head
 before_install:
   - gem update bundler
-after_success:
-  - CI=true TRAVIS=true coveralls --verbose
+env:
+  global:
+    - JRUBY_OPTS="--debug"
 matrix:
-  include:
-    - rvm: jruby-head
-      env: JRUBY_OPTS="$JRUBY_OPTS --debug"
   allow_failures:
     - rvm: jruby-head
     - rvm: rbx-2

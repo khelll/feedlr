@@ -8,23 +8,21 @@ group :development do
   gem 'pry'
   gem 'pry-remote'
   gem 'pry-nav'
-  platforms :ruby_19, :ruby_20, :ruby_21 do
+  platforms :ruby_20, :ruby_21, :ruby_22 do
     gem 'redcarpet'
   end
 end
 
 group :test do
-  gem 'coveralls', '~> 0.7', require: false
-  gem 'rspec', '>= 2.14'
+  gem 'coveralls', '~> 0.8', require: false
+  gem 'rspec', '~> 3.4'
   gem 'rspec-nc'
-  gem 'rubocop', '>= 0.2', platforms: [:ruby_19, :ruby_20, :ruby_21]
-  gem 'simplecov', '~> 0.7.1', require: false
-  if RUBY_VERSION >= '1.9.3'
-    gem 'guard', '~> 2.6'
-    gem 'guard-rspec', '~> 4.2'
-  end
-  gem 'webmock', '~> 1.1'
-  gem 'vcr', '~> 2.5'
+  gem 'rubocop', '~> 0.37', platforms: [:ruby_20, :ruby_21, :ruby_22]
+  gem 'simplecov', '~> 0.11', require: false
+  gem 'guard', '~> 2.13'
+  gem 'guard-rspec', '~> 4.6'
+  gem 'webmock', '~> 1.24'
+  gem 'vcr', '~> 3.0'
 end
 
 # Specify your gem's dependencies in feedlr.gemspec
