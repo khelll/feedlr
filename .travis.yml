@@ -10,6 +10,8 @@ rvm:
   - jruby-head
 before_install:
   - gem update bundler
+after_success:
+  - CI=true TRAVIS=true coveralls --verbose
 matrix:
   include:
     - rvm: jruby-head
