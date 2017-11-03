@@ -27,7 +27,7 @@ A Ruby interface to Feedly [API](http://developer.feedly.com/).
 
 ## Supported Ruby Versions
 
-Feedlr is tested under 2.0, 2.1, 2.2, JRuby(1.9 mode) and Rubinius 2.2.7.
+Feedlr is tested under 2.0, 2.1, 2.2, 2.3, 2.4 JRuby(1.9 mode) and Rubinius 3.x.
 
 ## Installation
 
