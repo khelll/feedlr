@@ -4,7 +4,9 @@ rvm:
   - 2.0
   - 2.1
   - 2.2
-  - rbx-2
+  - 2.3
+  - 2.4
+  - rbx-3
   - ruby-head
   - jruby
   - jruby-head
@@ -16,6 +18,6 @@ env:
 matrix:
   allow_failures:
     - rvm: jruby-head
-    - rvm: rbx-2
+    - rvm: rbx-3
     - rvm: ruby-head
   fast_finish: true
