@@ -5,7 +5,7 @@ require_relative 'feedlr/null_logger'
 # Feedlr top level module
 module Feedlr
   class << self
-    attr_accessor :oauth_access_token
+    attr_accessor :oauth_access_token, :oauth_refresh_token
     attr_writer :sandbox, :logger
 
     # config/initializers/Feedlr.rb (for instance)
