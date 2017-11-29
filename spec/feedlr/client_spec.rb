@@ -31,6 +31,46 @@ describe Feedlr::Client do
     end
   end
 
+  describe "#oauth_refresh_token" do
+    it "should default to Feedlr.oauth_refresh_token if not set" do
+      Feedlr.configure { |c| c.oauth_refresh_token = "test" }
+      client = Feedlr::Client.new
+      expect(client.oauth_refresh_token).to eq(Feedlr.oauth_refresh_token)
+    end
+
+    it "should be have a value when set" do
+      client = Feedlr::Client.new(oauth_refresh_token: "new_test")
+      expect(client.oauth_refresh_token).to eq("new_test")
+    end
+  end
+
+  describe "#refresh_oauth_token" do
+    let(:refresh_oauth_token) { "new_test" }
+    let(:client) do
+      Feedlr::Client.new(oauth_refresh_token: refresh_oauth_token)
+    end
+    let(:params) do
+      {
+        refresh_token: refresh_oauth_token,
+        client_id: "feedlydev",
+        client_secret: "feedlydev",
+        grant_type: "refresh_token",
+      }
+    end
+    let(:arguments) do
+      { client: client, method: :post, path: "/auth/token", params: params }
+    end
+    let(:request) { Feedlr::Request.new(arguments) }
+
+    it "runs a request to refresh the token" do
+      expect(Feedlr::Request).to(
+        receive(:new).with(arguments).and_return(request)
+      )
+      expect(request).to receive(:perform)
+      client.refresh_oauth_token
+    end
+  end
+
   describe '#logger' do
     it 'should default to Feedlr.logger if not set' do
       Feedlr.configure { |c| c.logger = Logger.new(STDOUT) }
